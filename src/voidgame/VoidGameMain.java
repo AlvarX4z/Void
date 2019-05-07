@@ -3,6 +3,7 @@ package voidgame;
 import java.util.Scanner;
 
 import game_elements.Protagonist;
+import graphic_interface.Window;
 
 public class VoidGameMain {
 
@@ -12,18 +13,8 @@ public class VoidGameMain {
 	 * @author Alvaro de Francisco Sanchez
 	 */
 	public static void main(String[] args) {
-		
-		// ---------------------------------------------------
-		// ----- INITIALISING REQUIRED CLASSES' OBJECTS ------
-		// ---------------------------------------------------
-
-		Protagonist protagonist = new Protagonist(null); 
-
-		// ----------------------
-		// ----- MAIN FLOW ------
-		// ----------------------
-
-		mainMenu();
+		Window w = new Window();
+		// mainMenu();
 	}
 
 	public static void mainMenu() {
@@ -54,10 +45,29 @@ public class VoidGameMain {
 	}
 
 	public static void newGame() {
-		String prologueMsg = "";
+		Protagonist protagonist = new Protagonist(null);
+		prologueStage(protagonist);
+		tentStage(protagonist);
+		
 	}
 
 	public static void loadGame() {
 
+	}
+	
+	public static void prologueStage(Protagonist protagonist) {
+		String prologueMsg = "Your name is " + protagonist.getFirstName() + " " + protagonist.getLastName() + ".\n"
+				+ "You are a citizen of the city of Arkham (Massachusetts) and a History professor specialised in American Indian culture "
+				+ "at the Mistakonic University.\n"
+				+ "You are currently on vacations and you have decided to spend some time on your favorite hobby: hiking and sleeping in "
+				+ "his tent at nature at the Miskatonic Valley.\n\n"
+				+ "Thus, this story begins...\n";
+		System.out.println("\n--------------------");
+		System.out.println(prologueMsg);
+	}
+	
+	public static void tentStage(Protagonist protagonist) {
+		String prologueMsg = "Such a wonderful day! I've just finished preparing the tent! It didn't take too much time, even less than I "
+				+ "expected. ";
 	}
 }
