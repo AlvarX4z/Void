@@ -6,13 +6,14 @@ package game_elements;
  */
 public class Protagonist {
 
-	// ----------------------
-	// ----- VARIABLES ------
-	// ----------------------
+	// ------------------------------
+	// ----- INTERNAL VARIABLES -----
+	// ------------------------------
 
 	private String firstName; // Protagonist's first name
 	private String lastName; // Protagonist's last name
-	private Item [] inventory; // Protagonist's current inventory
+	private Item[] inventory; // Protagonist's current inventory
+	// TODO PENSAR Y ENCONTRAR TODOS LOS ARCHIVOS DE SONIDO (CLASE FILE)
 
 	// -------------------------
 	// ----- CONSTRUCTORS ------
@@ -25,13 +26,13 @@ public class Protagonist {
 	public Protagonist(Item [] inventory) {
 		this.setFirstName("Randolph"); // The game's story is based on this first name for the protagonist
 		this.setLastName("Carter"); // The game's story is based on this last name for the protagonist
-		this.setInventory(null); // Inventory is set at null because at the beginning of the game the player doesn't have any items on him/her
+		this.setInventory(null); // Inventory is set at null because at the beginning of the game the player hasn't any items on him/her
 	}
 
 	// --------------------------------
 	// ----- GETTERS AND SETTERS ------
 	// --------------------------------
-	
+
 	/**
 	 * Gets the Protagonist's first name
 	 * @return The Protagonist's first name
@@ -39,7 +40,7 @@ public class Protagonist {
 	public String getFirstName() {
 		return firstName;
 	}
-	
+
 	/**
 	 * Sets the Protagonist's first name
 	 * @param | firstName The Protagonist's first name
@@ -47,7 +48,7 @@ public class Protagonist {
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
-	
+
 	/**
 	 * Gets the Protagonist's last name
 	 * @return The Protagonist's last name
@@ -55,7 +56,7 @@ public class Protagonist {
 	public String getLastName() {
 		return lastName;
 	}
-	
+
 	/**
 	 * Sets the Protagonist's last name
 	 * @param | lastName The Protagonist's last name
@@ -71,7 +72,7 @@ public class Protagonist {
 	public Item[] getInventory() {
 		return inventory;
 	}
-	
+
 	/**
 	 * Sets the Protagonist's inventory
 	 * @param inventory | The Protagonist's inventory
@@ -80,6 +81,8 @@ public class Protagonist {
 		this.inventory = inventory;
 	}
 	
+	//TODO GETTERS Y SETTERS DE LOS ARCHIVOS RELACIONADOS CON SONIDO
+
 	// ----------------------------------
 	// ----- FUNCTIONS AND METHODS ------
 	// ----------------------------------

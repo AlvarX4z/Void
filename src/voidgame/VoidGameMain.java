@@ -14,7 +14,6 @@ public class VoidGameMain {
 	 */
 	public static void main(String[] args) {
 		Window w = new Window();
-		// mainMenu();
 	}
 
 	public static void mainMenu() {
@@ -34,8 +33,6 @@ public class VoidGameMain {
 			}
 			if (menuOption == 1) { // Control flow in order to start a new game or load one
 				newGame(); 
-			} else {
-				loadGame();
 			}
 		} catch (NumberFormatException ex) {
 			System.err.println("\nYou didn't type a number!\n");
@@ -49,10 +46,6 @@ public class VoidGameMain {
 		prologueStage(protagonist);
 		tentStage(protagonist);
 		
-	}
-
-	public static void loadGame() {
-
 	}
 	
 	public static void prologueStage(Protagonist protagonist) {

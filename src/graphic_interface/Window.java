@@ -4,7 +4,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JFrame;
 import java.awt.Color;
-import java.awt.Dimension;
 import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
 import javax.swing.JMenu;
@@ -14,28 +13,35 @@ import voidgame.VoidGame;
 
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.ActionEvent;
 
 /**
  * Creates the System Window in which the game will be run
  * @author Alvaro de Francisco Sanchez
  */
-public class Window extends JFrame {
+public class Window extends JFrame  {
+
+	// ------------------------------
+	// ----- INTERNAL VARIABLES -----
+	// ------------------------------
+	
+	private VoidGame game;
 
 	/**
 	 * Window's basic Constructor
 	 */
 	public Window() {
-		
+
 		// ------------------
 		// ----- WINDOW -----
 		// ------------------
 
 		super(); // Gets the characteristics from the parent Class JFrame
-		setSize(new Dimension(1920, 1080)); // Full HD 16:9 resolution
 		setExtendedState(JFrame.MAXIMIZED_BOTH); // Maximizes the window
+		setUndecorated(true); // Sets the window to Full Screen
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Closes the program when the Window's X is clicked
-		setBackground(Color.BLACK); // Window's default background color
 		setTitle("Void"); // Window's title
 		setIconImage(new ImageIcon("./img/void.png").getImage()); // Window's game icon
 
@@ -64,8 +70,8 @@ public class Window extends JFrame {
 		// ***** NEW GAME ******
 		VoidMenuItem menuNewGame = new VoidMenuItem("New Game"); // Creation of a 'New Game' Menu Item
 		menuNewGame.addActionListener(new ActionListener() { // Function that creates an action listener
+			@Override
 			public void actionPerformed(ActionEvent arg0) { // Menu Item uses as event an 'actionPerformed'
-				//TODO PREGUNTAR POR LOS EVENTOS DE ACTION PERFORMED COMO MENU ITEM Y POR QUÉ ME CIERRA EN NEW GAME EN VEZ DE EN EXIT
 				VoidGame.newGame(); // Creates a 'Void' new game
 			}
 		});
@@ -74,8 +80,8 @@ public class Window extends JFrame {
 		// ***** SAVE GAME ******
 		VoidMenuItem menuSaveGame = new VoidMenuItem("Save Game"); // Creation of a 'Save Game' Menu Item
 		menuSaveGame.addActionListener(new ActionListener() { // Function that creates an action listener
+			@Override
 			public void actionPerformed(ActionEvent arg0) { // Menu Item uses as event an 'actionPerformed'
-				//TODO PREGUNTAR POR LOS EVENTOS DE ACTION PERFORMED COMO MENU ITEM Y POR QUÉ ME CIERRA EN NEW GAME EN VEZ DE EN EXIT
 				VoidGame.saveGame(); // Saves the current status of the game
 			}
 		});
@@ -83,28 +89,34 @@ public class Window extends JFrame {
 
 		// ***** LOAD GAME ******
 		VoidMenuItem menuLoadGame = new VoidMenuItem("Load Game"); // Creation of a 'Load Game' Menu Item
-		menuNewGame.addActionListener(new ActionListener() { // Function that creates an action listener
+		menuLoadGame.addActionListener(new ActionListener() { // Function that creates an action listener
+			@Override
 			public void actionPerformed(ActionEvent arg0) { // Menu Item uses as event an 'actionPerformed'
-				//TODO PREGUNTAR POR LOS EVENTOS DE ACTION PERFORMED COMO MENU ITEM Y POR QUÉ ME CIERRA EN NEW GAME EN VEZ DE EN EXIT
 				VoidGame.loadGame(); // Load a 'Void' game
 			}
 		});
 		menuGame.add(menuLoadGame); // Adds said Menu Item to the Game Options Menu
 
 		// ***** KEYBINDINGS ******
+		String keybindingsList = "------------------------------------------------\n"
+				+ "          GAMEPLAY KEYBINDING\n"
+				+ "------------------------------------------------\n"
+				+ "Inventory   -   Ctrl+I\n"
+				+ "------------------------------------------------\n"
+				+ "          OPTIONS KEYBINDINGS\n"
+				+ "------------------------------------------------\n"
+				+ "New Game   -   Ctrl+N\n"
+				+ "Save Game   -   Ctrl+S\n"
+				+ "Load Game   -   Ctrl+L\n"
+				+ "Keybindings   -   Ctrl+K\n"
+				+ "De/Activate Sound   -   Ctrl+Y\n"
+				+ "Exit Game   -   Ctrl+E\n"
+				+ "------------------------------------------------\n\n"; // Message to be displayed in the Dialog
 		VoidMenuItem menuKeybindings = new VoidMenuItem("Keybindings"); // Creation of a 'Keybindings' Menu Item
-		menuNewGame.addActionListener(new ActionListener() { // Function that creates an action listener
+		menuKeybindings.addActionListener(new ActionListener() { // Function that creates an action listener
+			@Override
 			public void actionPerformed(ActionEvent arg0) { // Menu Item uses as event an 'actionPerformed'
-				//TODO PREGUNTAR POR LOS EVENTOS DE ACTION PERFORMED COMO MENU ITEM Y POR QUÉ ME CIERRA EN NEW GAME EN VEZ DE EN EXIT
-				String keybindingsList = "Inventory\t-\tCtrl+I\n"
-						+ "\n---------------------------------\n"
-						+ "New Game\t-\tCtrl+N\n"
-						+ "Save Game\t-\tCtrl+S\n"
-						+ "Load Game\t-\tCtrl+L\n"
-						+ "Keybindings\t-\tCtrl+K\n"
-						+ "De/Activate Sound\t-\tCtrl+Y\n"
-						+ "Exit Game\t-\tEsc\n"; // Message to be displayed in the Dialog
-				JOptionPane.showMessageDialog(null, keybindingsList, "Void - Keybindings", JOptionPane.CLOSED_OPTION); // Shows the keybindings in a Dialog
+				JOptionPane.showMessageDialog(null, keybindingsList, "Keybindings", JOptionPane.INFORMATION_MESSAGE); // Shows the keybindings in a Dialog
 			}
 		});
 		menuGame.add(menuKeybindings); // Adds said Menu Item to the Game Options Menu
@@ -112,31 +124,80 @@ public class Window extends JFrame {
 		// ***** DEACTIVATE SOUND ******
 		JCheckBoxMenuItem menuSound = new JCheckBoxMenuItem("Deactivate Sound"); // Creation of a 'Deactivate Sound' Menu Item
 		menuSound.setForeground(Color.LIGHT_GRAY); // Check Box Menu's Item font color
-		menuSound.setFont(new Font("Ink Free", Font.PLAIN, 25)); // Check Box Menu's Item font family, style and size
+		menuSound.setFont(new Font("Ink Free", Font.PLAIN, 25)); // Check Box Menu Item font family, style and size
 		menuSound.setBackground(Color.BLACK); // Check Box Menu's Item background color
-		menuNewGame.addActionListener(new ActionListener() { // Function that creates an action listener
+		menuSound.addActionListener(new ActionListener() { // Function that creates an action listener
+			@Override
 			public void actionPerformed(ActionEvent arg0) { // Menu Item uses as event an 'actionPerformed'
-				//TODO PREGUNTAR POR LOS EVENTOS DE ACTION PERFORMED COMO MENU ITEM Y POR QUÉ ME CIERRA EN NEW GAME EN VEZ DE EN EXIT
+				if (menuSound.getState()) { // Checks if the Check Box Menu Item is checked
+					VoidGame.soundON(); // Enables the music and SFX sounds
+				} else { 
+					VoidGame.soundOFF(); // Disables the music and SFX sounds
+				}
 			}
 		});
 		menuGame.add(menuSound); // Adds said Check Box Menu Item to the Game Options Menu
 
 		// ***** EXIT ******
 		VoidMenuItem menuExit = new VoidMenuItem("Exit"); // Creation of an 'Exit' Menu Item
-		menuNewGame.addActionListener(new ActionListener() { // Function that creates an action listener
+		menuExit.addActionListener(new ActionListener() { // Function that creates an action listener
+			@Override
 			public void actionPerformed(ActionEvent arg0) { // Menu Item uses as event an 'actionPerformed'
-				//TODO PREGUNTAR POR LOS EVENTOS DE ACTION PERFORMED COMO MENU ITEM Y POR QUÉ ME CIERRA EN NEW GAME EN VEZ DE EN EXIT
-				System.exit(0); // Closes the program
+				System.exit(EXIT_ON_CLOSE); // Closes the program
 			}
 		});
 		menuGame.add(menuExit); // Adds said Menu Item to the Game Options Menu
+
+		// --------------------------------
+		// ----- WINDOW'S KEYBINDINGS -----
+		// --------------------------------
+
+		addKeyListener(new KeyAdapter() { // Adds a Key Listener for keyboard input (keybindings)
+			@Override
+			public void keyPressed(KeyEvent e) { // Function that recognizes when a key is pressed in order to activate the event
+				if (e.isControlDown()) { // Checks if the key 'Ctrl' is being pressed down
+					switch (e.getKeyCode()) { // Depending on the pressed key, a case will be executed
+					case KeyEvent.VK_I: // 'I' key
+						//TODO CONECTAR EL EVENTO A LA FUNCIÓN DE VER EL INVENTARIO
+						; // 
+						break;
+					case KeyEvent.VK_N: // 'N' key
+						VoidGame.newGame(); // Creates a 'Void' new game
+						break;
+					case KeyEvent.VK_S: // 'S' key
+						VoidGame.saveGame(); // Saves the current status of the game
+						break;
+					case KeyEvent.VK_L: // 'L' key
+						VoidGame.loadGame(); // Load a 'Void' game
+						break;
+					case KeyEvent.VK_K: // 'K' key
+						JOptionPane.showMessageDialog(null, keybindingsList, "Keybindings", JOptionPane.INFORMATION_MESSAGE); // Shows the keybindings in a Dialog
+						break;
+					case KeyEvent.VK_Y: // 'Y' key
+						if (menuSound.getState()) { // Checks if the Check Box Menu Item is checked
+							VoidGame.soundON(); // Enables the music and SFX sounds
+						} else { 
+							VoidGame.soundOFF(); // Disables the music and SFX sounds
+						}
+						break;
+					case KeyEvent.VK_E: // 'E' key
+						System.exit(EXIT_ON_CLOSE); // Closes the program
+						break;
+					}
+				} else {
+					JOptionPane.showMessageDialog(null, 
+							"You pressed an unexisting key combination!\nPlease, press the 'Ctrl' key first!\n\n" + keybindingsList + "\n", 
+							"Wrong Key Combination", JOptionPane.INFORMATION_MESSAGE); // Shows an informative Dialog about the use of keybindings
+				}
+			}
+		});
 
 		// -------------------------------
 		// ----- WINDOW'S VISIBILITY -----
 		// -------------------------------
 
 		setVisible(true); // Makes the window to be visible
-	}	
+	}
 
 	/* if(Hay partida de bd) {
 			//traigo todos los datos
