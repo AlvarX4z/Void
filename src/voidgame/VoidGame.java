@@ -16,7 +16,7 @@ public class VoidGame {
 	// ------------------------------
 
 	private Protagonist player;
-	private LinkedList<Stage> stages;
+	private Stage actual;
 
 	// -----------------------
 	// ----- CONSTRUCTOR -----
@@ -28,7 +28,7 @@ public class VoidGame {
 	 * Creates a 'Void' new game
 	 */
 	public static void newGame() {
-
+			
 	}
 
 	/**

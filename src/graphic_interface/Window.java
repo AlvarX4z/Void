@@ -37,7 +37,6 @@ public class Window extends JFrame  {
 		// ------------------
 		// ----- WINDOW -----
 		// ------------------
-
 		super(); // Gets the characteristics from the parent Class JFrame
 		setExtendedState(JFrame.MAXIMIZED_BOTH); // Maximizes the window
 		setUndecorated(true); // Sets the window to Full Screen
@@ -73,6 +72,8 @@ public class Window extends JFrame  {
 			@Override
 			public void actionPerformed(ActionEvent arg0) { // Menu Item uses as event an 'actionPerformed'
 				VoidGame.newGame(); // Creates a 'Void' new game
+				VoidGame.getPrimeraPantalla();
+				VoidGame.siguientePantalla
 			}
 		});
 		menuGame.add(menuNewGame); // Adds said Menu Item to the Game Options Menu
