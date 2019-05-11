@@ -6,7 +6,7 @@ import java.awt.Font;
 import javax.swing.JMenuItem;
 
 /**
- * Characteristics for my own customized JMenuItems in the game top menu
+ * Creates my own customized JMenuItems in the game top menu
  * @author Alvaro de Francisco Sanchez
  */
 public class VoidMenuItem extends JMenuItem {

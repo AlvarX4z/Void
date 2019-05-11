@@ -26,8 +26,12 @@ public class Window extends JFrame  {
 	// ------------------------------
 	// ----- INTERNAL VARIABLES -----
 	// ------------------------------
-	
+
 	private VoidGame game;
+
+	// -----------------------
+	// ----- CONSTRUCTOR -----
+	// -----------------------
 
 	/**
 	 * Window's basic Constructor
@@ -72,10 +76,10 @@ public class Window extends JFrame  {
 			@Override
 			public void actionPerformed(ActionEvent arg0) { // Menu Item uses as event an 'actionPerformed'
 				VoidGame.newGame(); // Creates a 'Void' new game
-				VoidGame.getPrimeraPantalla();
-				VoidGame.siguientePantalla
+				// VoidGame.getPrimeraPantalla();
+				// VoidGame.siguientePantalla
 			}
-		});
+		});	
 		menuGame.add(menuNewGame); // Adds said Menu Item to the Game Options Menu
 
 		// ***** SAVE GAME ******
@@ -196,6 +200,9 @@ public class Window extends JFrame  {
 		// -------------------------------
 		// ----- WINDOW'S VISIBILITY -----
 		// -------------------------------
+		
+		VoidPanel miaumiau = new VoidPanel();
+		add(miaumiau);
 
 		setVisible(true); // Makes the window to be visible
 	}

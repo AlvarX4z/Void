@@ -10,8 +10,8 @@ public class Protagonist {
 	// ----- INTERNAL VARIABLES -----
 	// ------------------------------
 
-	private String firstName; // Protagonist's first name
-	private String lastName; // Protagonist's last name
+	public static final String firstName = "Randolph"; // The game's story is based on this first name for the protagonist
+	public static final String lastName = "Carter"; // The game's story is based on this last name for the protagonist
 	private Item[] inventory; // Protagonist's current inventory
 	// TODO PENSAR Y ENCONTRAR TODOS LOS ARCHIVOS DE SONIDO (CLASE FILE)
 
@@ -24,8 +24,6 @@ public class Protagonist {
 	 * @param inventory | Protagonist's inventory 
 	 */
 	public Protagonist(Item [] inventory) {
-		this.setFirstName("Randolph"); // The game's story is based on this first name for the protagonist
-		this.setLastName("Carter"); // The game's story is based on this last name for the protagonist
 		this.setInventory(null); // Inventory is set at null because at the beginning of the game the player hasn't any items on him/her
 	}
 
@@ -42,27 +40,11 @@ public class Protagonist {
 	}
 
 	/**
-	 * Sets the Protagonist's first name
-	 * @param | firstName The Protagonist's first name
-	 */
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	/**
 	 * Gets the Protagonist's last name
 	 * @return The Protagonist's last name
 	 */
 	public String getLastName() {
 		return lastName;
-	}
-
-	/**
-	 * Sets the Protagonist's last name
-	 * @param | lastName The Protagonist's last name
-	 */
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
 	}
 
 	/**
