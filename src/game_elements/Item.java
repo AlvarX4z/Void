@@ -19,8 +19,8 @@ public class Item {
 	private String name; // Item's name
 	private String description; // Item's description
 	private boolean interactive; // If the item is interactive: TRUE if it is, FALSE if it isn't
-	private File pickingUpSound; // Sound file for picking up items. Null if the item isn't meant to be picked up. It is a static variable because the sound File will be the same for all the Item Objects
-	private File usingSound; // Sound file for using items. Null if the item isn't meant to be used
+	private static File pickingUpSound; // Sound file for picking up items. Null if the item isn't meant to be picked up. It is a static variable because the sound File will be the same for all the Item Objects
+	private static File usingSound; // Sound file for using items. Null if the item isn't meant to be used. It is a static variable because the sound File will be the same for all the Item Objects
 
 	// -------------------------
 	// ----- CONSTRUCTORS ------

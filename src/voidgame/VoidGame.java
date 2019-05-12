@@ -1,7 +1,5 @@
 package voidgame;
 
-import java.util.LinkedList;
-
 import game_elements.Protagonist;
 import game_elements.Stage;
 
@@ -16,7 +14,7 @@ public class VoidGame {
 	// ------------------------------
 
 	private Protagonist player;
-	private Stage actual;
+	private Stage currentStage;
 
 	// -----------------------
 	// ----- CONSTRUCTOR -----

@@ -9,7 +9,7 @@ import javax.swing.JMenuItem;
  * Creates my own customized JMenuItems in the game top menu
  * @author Alvaro de Francisco Sanchez
  */
-public class VoidMenuItem extends JMenuItem {
+public final class VoidMenuItem extends JMenuItem {
 	
 	/**
 	 * My own customized JMenuItems in the game top menu within 'Game Options' tab

@@ -1,5 +1,7 @@
 package game_elements;
 
+import java.io.File;
+
 /**
  * Emulates the Protagonist's characteristics of the videogame
  * @author Alvaro de Francisco Sanchez
@@ -13,7 +15,9 @@ public class Protagonist {
 	public static final String firstName = "Randolph"; // The game's story is based on this first name for the protagonist
 	public static final String lastName = "Carter"; // The game's story is based on this last name for the protagonist
 	private Item[] inventory; // Protagonist's current inventory
-	// TODO PENSAR Y ENCONTRAR TODOS LOS ARCHIVOS DE SONIDO (CLASE FILE)
+	public static final File yawningSound = new File("./audio/yawning.wav"); // Sound file for a yawning
+	public static final File huhSound = new File("./audio/huh.wav"); // Sound file for a 'huh' sound
+	//TODO IMAGEN 7
 
 	// -------------------------
 	// ----- CONSTRUCTORS ------

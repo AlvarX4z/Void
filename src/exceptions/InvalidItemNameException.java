@@ -4,7 +4,7 @@ package exceptions;
  * Exception related to an invalid blank Item's name
  * @author Alvaro de Francisco Sanchez
  */
-public class InvalidItemNameException extends Exception {
+public final class InvalidItemNameException extends Exception {
 	/**
 	 * InvalidItemNameException's basic Constructor
 	 * @param msg | The message to be displayed when the exception is threw
