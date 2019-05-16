@@ -13,6 +13,14 @@ import javax.swing.JPanel;
 import javax.swing.JMenu;
 import javax.swing.border.MatteBorder;
 
+import exceptions.InvalidAbsolutePathException;
+import exceptions.InvalidItemDescriptionException;
+import exceptions.InvalidItemMaxLengthException;
+import exceptions.InvalidItemMinLengthException;
+import exceptions.InvalidItemNameException;
+import exceptions.InvalidStageDescriptionException;
+import exceptions.InvalidStageNameException;
+import game_elements.Item;
 import game_elements.Protagonist;
 import game_elements.Stage;
 
@@ -21,6 +29,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.BorderLayout;
 
@@ -36,15 +45,23 @@ public final class Window extends JFrame {
 
 	private Stage stage;
 	private Protagonist player;
-	
+
 	// -----------------------
 	// ----- CONSTRUCTOR -----
 	// -----------------------
 
 	/**
 	 * Window's basic Constructor
+	 * @throws InvalidAbsolutePathException 
+	 * @throws InvalidItemDescriptionException 
+	 * @throws InvalidItemNameException 
+	 * @throws InvalidItemMinLengthException 
+	 * @throws InvalidItemMaxLengthException 
+	 * @throws InvalidStageDescriptionException 
+	 * @throws InvalidStageNameException 
 	 */
-	public Window() {
+	public Window() throws InvalidItemNameException, InvalidItemDescriptionException, InvalidAbsolutePathException, InvalidStageNameException, 
+	InvalidStageDescriptionException, InvalidItemMaxLengthException, InvalidItemMinLengthException {
 
 		// ------------------
 		// ----- WINDOW -----
@@ -171,7 +188,6 @@ public final class Window extends JFrame {
 					switch (e.getKeyCode()) { // Depending on the pressed key, a case will be executed
 					case KeyEvent.VK_I: // 'I' key
 						//TODO CONECTAR EL EVENTO A LA FUNCIÓN DE VER EL INVENTARIO
-						; // 
 						break;
 					case KeyEvent.VK_N: // 'N' key
 						newGame(); // Creates a 'Void' new game
@@ -208,19 +224,30 @@ public final class Window extends JFrame {
 		// ----- GENERAL JPANEL'S STRUCTURE -----
 		// --------------------------------------
 
+
+
 		JPanel test = new JPanel(); // A new JPanel's creation for the Window frame
+		test.setBackground(Color.BLACK); // Sets the background's color to black
 		test.setLayout(new BorderLayout()); // Sets a Border Layout to the panel
 		add(test); // Adds the JPanel to the Window frame
-		
+
 		JLabel imageBackground = new JLabel();
 		imageBackground.setIcon(new ImageIcon("./img/1pp.jpg"));
+
+
 		
+		Item i1 = new Item("Go to the tent", "blabalbalalbalbablala", false, null, null);
+		ArrayList<Item> il1 = new ArrayList<Item>();
+		il1.add(i1);
+		Stage s1 = new Stage("Tent", "fghkhffghgfkh", il1, imageBackground);
+
+
 		// ------------------------------------------
 		// ----- EAST BUTTON JPANEL'S STRUCTURE -----
 		// ------------------------------------------
 
 		JPanel testBotones = new JPanel();
-		testBotones.setLayout(new GridLayout(5, 1));
+		testBotones.setLayout(new GridLayout(il1.size(), 1));
 		VoidButton b1 = new VoidButton("Get in the fucking tent");
 		VoidButton b2 = new VoidButton("prueba");
 		VoidButton b3 = new VoidButton("prueba");
@@ -231,14 +258,14 @@ public final class Window extends JFrame {
 		testBotones.add(b3);
 		testBotones.add(b4);
 		testBotones.add(b5);
-		
+
 		JEditorPane testPane = new JEditorPane();
 		testPane.setBackground(Color.BLACK);
 		testPane.setEditable(false);
 		testPane.setForeground(Color.WHITE);
 		testPane.setFont(new Font("Ink Free", Font.PLAIN, 20));
 		testPane.setSize(1920, 200);
-		testPane.setText("gdfgfg\n");
+		testPane.setText(stage.getDescription());
 
 		test.add(imageBackground, BorderLayout.CENTER);
 		test.add(testBotones, BorderLayout.EAST);
@@ -247,6 +274,9 @@ public final class Window extends JFrame {
 		// -------------------------------
 		// ----- WINDOW'S VISIBILITY -----
 		// -------------------------------
+
+		this.setContentPane(test);
+
 
 		setVisible(true); // Makes the window to be visible
 	}

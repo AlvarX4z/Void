@@ -1,5 +1,12 @@
 package voidgame;
 
+import exceptions.InvalidAbsolutePathException;
+import exceptions.InvalidItemDescriptionException;
+import exceptions.InvalidItemMaxLengthException;
+import exceptions.InvalidItemMinLengthException;
+import exceptions.InvalidItemNameException;
+import exceptions.InvalidStageDescriptionException;
+import exceptions.InvalidStageNameException;
 import game_elements.Protagonist;
 import graphic_interface.Window;
 
@@ -11,14 +18,19 @@ public class VoidGameMain {
 	 * @author Alvaro de Francisco Sanchez
 	 */
 	public static void main(String[] args) {
-		Window w = new Window();
+		try {
+			Window w = new Window();
+		} catch (InvalidItemNameException | InvalidItemDescriptionException | InvalidAbsolutePathException
+				| InvalidStageNameException | InvalidStageDescriptionException | InvalidItemMaxLengthException
+				| InvalidItemMinLengthException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public static void newGame() {
 		Protagonist protagonist = new Protagonist(null);
 		prologueStage(protagonist);
 		tentStage(protagonist);
-		
 	}
 	
 	public static void prologueStage(Protagonist protagonist) {
