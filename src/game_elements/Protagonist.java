@@ -12,13 +12,13 @@ public class Protagonist {
 	// ----- INTERNAL VARIABLES -----
 	// ------------------------------
 
-	public static final String firstName = "Randolph"; // The game's story is based on this first name for the protagonist
-	public static final String lastName = "Carter"; // The game's story is based on this last name for the protagonist
+	public static final String firstName = "Randolph"; // The game's story is based on this first name for the Protagonist
+	public static final String lastName = "Carter"; // The game's story is based on this last name for the Protagonist
 	private Item[] inventory; // Protagonist's current inventory
 	public static final File yawningSound = new File("./audio/yawning.wav"); // Sound file for a yawning
 	public static final File huhSound = new File("./audio/huh.wav"); // Sound file for a 'huh' sound
 	//TODO IMAGEN 7
-
+	
 	// -------------------------
 	// ----- CONSTRUCTORS ------
 	// -------------------------
@@ -66,8 +66,6 @@ public class Protagonist {
 	public void setInventory(Item[] inventory) {
 		this.inventory = inventory;
 	}
-	
-	//TODO GETTERS Y SETTERS DE LOS ARCHIVOS RELACIONADOS CON SONIDO
 
 	// ----------------------------------
 	// ----- FUNCTIONS AND METHODS ------

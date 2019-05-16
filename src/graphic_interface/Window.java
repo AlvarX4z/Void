@@ -2,33 +2,41 @@ package graphic_interface;
 
 import javax.swing.ImageIcon;
 import javax.swing.JCheckBoxMenuItem;
+import javax.swing.JEditorPane;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+
 import java.awt.Color;
 import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JMenu;
 import javax.swing.border.MatteBorder;
 
-import voidgame.VoidGame;
+import game_elements.Protagonist;
+import game_elements.Stage;
 
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.ActionEvent;
+import java.awt.BorderLayout;
 
 /**
  * Creates the System Window in which the game will be run
  * @author Alvaro de Francisco Sanchez
  */
-public class Window extends JFrame  {
+public final class Window extends JFrame {
 
 	// ------------------------------
 	// ----- INTERNAL VARIABLES -----
 	// ------------------------------
 
-	private VoidGame game;
-
+	private Stage stage;
+	private Protagonist player;
+	
 	// -----------------------
 	// ----- CONSTRUCTOR -----
 	// -----------------------
@@ -41,6 +49,7 @@ public class Window extends JFrame  {
 		// ------------------
 		// ----- WINDOW -----
 		// ------------------
+
 		super(); // Gets the characteristics from the parent Class JFrame
 		setExtendedState(JFrame.MAXIMIZED_BOTH); // Maximizes the window
 		setUndecorated(true); // Sets the window to Full Screen
@@ -75,9 +84,7 @@ public class Window extends JFrame  {
 		menuNewGame.addActionListener(new ActionListener() { // Function that creates an action listener
 			@Override
 			public void actionPerformed(ActionEvent arg0) { // Menu Item uses as event an 'actionPerformed'
-				VoidGame.newGame(); // Creates a 'Void' new game
-				// VoidGame.getPrimeraPantalla();
-				// VoidGame.siguientePantalla
+				newGame(); // Creates a 'Void' new game
 			}
 		});	
 		menuGame.add(menuNewGame); // Adds said Menu Item to the Game Options Menu
@@ -87,7 +94,7 @@ public class Window extends JFrame  {
 		menuSaveGame.addActionListener(new ActionListener() { // Function that creates an action listener
 			@Override
 			public void actionPerformed(ActionEvent arg0) { // Menu Item uses as event an 'actionPerformed'
-				VoidGame.saveGame(); // Saves the current status of the game
+				saveGame(); // Saves the current status of the game
 			}
 		});
 		menuGame.add(menuSaveGame); // Adds said Menu Item to the Game Options Menu
@@ -97,7 +104,7 @@ public class Window extends JFrame  {
 		menuLoadGame.addActionListener(new ActionListener() { // Function that creates an action listener
 			@Override
 			public void actionPerformed(ActionEvent arg0) { // Menu Item uses as event an 'actionPerformed'
-				VoidGame.loadGame(); // Load a 'Void' game
+				loadGame(); // Load a 'Void' game
 			}
 		});
 		menuGame.add(menuLoadGame); // Adds said Menu Item to the Game Options Menu
@@ -135,9 +142,9 @@ public class Window extends JFrame  {
 			@Override
 			public void actionPerformed(ActionEvent arg0) { // Menu Item uses as event an 'actionPerformed'
 				if (menuSound.getState()) { // Checks if the Check Box Menu Item is checked
-					VoidGame.soundON(); // Enables the music and SFX sounds
+					soundON(); // Enables the music and SFX sounds
 				} else { 
-					VoidGame.soundOFF(); // Disables the music and SFX sounds
+					soundOFF(); // Disables the music and SFX sounds
 				}
 			}
 		});
@@ -167,22 +174,22 @@ public class Window extends JFrame  {
 						; // 
 						break;
 					case KeyEvent.VK_N: // 'N' key
-						VoidGame.newGame(); // Creates a 'Void' new game
+						newGame(); // Creates a 'Void' new game
 						break;
 					case KeyEvent.VK_S: // 'S' key
-						VoidGame.saveGame(); // Saves the current status of the game
+						saveGame(); // Saves the current status of the game
 						break;
 					case KeyEvent.VK_L: // 'L' key
-						VoidGame.loadGame(); // Load a 'Void' game
+						loadGame(); // Load a 'Void' game
 						break;
 					case KeyEvent.VK_K: // 'K' key
 						JOptionPane.showMessageDialog(null, keybindingsList, "Keybindings", JOptionPane.INFORMATION_MESSAGE); // Shows the keybindings in a Dialog
 						break;
 					case KeyEvent.VK_Y: // 'Y' key
 						if (menuSound.getState()) { // Checks if the Check Box Menu Item is checked
-							VoidGame.soundON(); // Enables the music and SFX sounds
+							soundON(); // Enables the music and SFX sounds
 						} else { 
-							VoidGame.soundOFF(); // Disables the music and SFX sounds
+							soundOFF(); // Disables the music and SFX sounds
 						}
 						break;
 					case KeyEvent.VK_E: // 'E' key
@@ -197,14 +204,90 @@ public class Window extends JFrame  {
 			}
 		});
 
+		// --------------------------------------
+		// ----- GENERAL JPANEL'S STRUCTURE -----
+		// --------------------------------------
+
+		JPanel test = new JPanel(); // A new JPanel's creation for the Window frame
+		test.setLayout(new BorderLayout()); // Sets a Border Layout to the panel
+		add(test); // Adds the JPanel to the Window frame
+		
+		JLabel imageBackground = new JLabel();
+		imageBackground.setIcon(new ImageIcon("./img/1pp.jpg"));
+		
+		// ------------------------------------------
+		// ----- EAST BUTTON JPANEL'S STRUCTURE -----
+		// ------------------------------------------
+
+		JPanel testBotones = new JPanel();
+		testBotones.setLayout(new GridLayout(5, 1));
+		VoidButton b1 = new VoidButton("Get in the fucking tent");
+		VoidButton b2 = new VoidButton("prueba");
+		VoidButton b3 = new VoidButton("prueba");
+		VoidButton b4 = new VoidButton("prueba");
+		VoidButton b5 = new VoidButton("prueba");
+		testBotones.add(b1);
+		testBotones.add(b2);
+		testBotones.add(b3);
+		testBotones.add(b4);
+		testBotones.add(b5);
+		
+		JEditorPane testPane = new JEditorPane();
+		testPane.setBackground(Color.BLACK);
+		testPane.setEditable(false);
+		testPane.setForeground(Color.WHITE);
+		testPane.setFont(new Font("Ink Free", Font.PLAIN, 20));
+		testPane.setSize(1920, 200);
+		testPane.setText("gdfgfg\n");
+
+		test.add(imageBackground, BorderLayout.CENTER);
+		test.add(testBotones, BorderLayout.EAST);
+		test.add(testPane, BorderLayout.SOUTH);
+
 		// -------------------------------
 		// ----- WINDOW'S VISIBILITY -----
 		// -------------------------------
-		
-		VoidPanel miaumiau = new VoidPanel();
-		add(miaumiau);
 
 		setVisible(true); // Makes the window to be visible
+	}
+
+	// ---------------------------------
+	// ----- METHODS AND FUNCTIONS -----
+	// ---------------------------------
+
+	/**
+	 * Creates a 'Void' new game
+	 */
+	public static void newGame() {
+
+	}
+
+	/**
+	 * Saves the current status of the game
+	 */
+	public static void saveGame() {
+
+	}
+
+	/**
+	 * Loads a 'Void' save-game
+	 */
+	public static void loadGame() {
+
+	}
+
+	/**
+	 * Turns the music and SFX sounds on
+	 */
+	public static void soundON() {
+
+	}
+
+	/**
+	 * Turns the music and SFX sounds off
+	 */
+	public static void soundOFF() {
+
 	}
 
 	/* if(Hay partida de bd) {
