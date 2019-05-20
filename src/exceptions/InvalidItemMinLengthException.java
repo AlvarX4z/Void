@@ -7,7 +7,7 @@ package exceptions;
 public final class InvalidItemMinLengthException extends Exception {
 	/**
 	 * InvalidItemMinLengthException's basic Constructor
-	 * @param msg | The message to be displayed when the exception is threw
+	 * @param msg The message to be displayed when the exception is threw
 	 */
 	public InvalidItemMinLengthException(String msg) {
 		super(msg);

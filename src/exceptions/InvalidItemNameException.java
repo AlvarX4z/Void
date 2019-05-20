@@ -7,7 +7,7 @@ package exceptions;
 public final class InvalidItemNameException extends Exception {
 	/**
 	 * InvalidItemNameException's basic Constructor
-	 * @param msg | The message to be displayed when the exception is threw
+	 * @param msg The message to be displayed when the exception is threw
 	 */
 	public InvalidItemNameException(String msg) {
 		super(msg);

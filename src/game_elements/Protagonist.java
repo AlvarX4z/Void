@@ -26,7 +26,7 @@ public class Protagonist {
 
 	/**
 	 * Protagonist's basic Constructor
-	 * @param inventory | Protagonist's inventory 
+	 * @param inventory Protagonist's inventory 
 	 */
 	public Protagonist(ArrayList<Item> inventory) {
 		this.setInventory(null); // Inventory is set at null because at the beginning of the game the player hasn't any items on him/her
@@ -62,7 +62,7 @@ public class Protagonist {
 
 	/**
 	 * Sets the Protagonist's inventory
-	 * @param inventory | The Protagonist's inventory
+	 * @param inventory The Protagonist's inventory
 	 */
 	public void setInventory(ArrayList<Item> inventory) {
 		this.inventory = inventory;

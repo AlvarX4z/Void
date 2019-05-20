@@ -66,7 +66,7 @@ public final class Window extends JFrame {
 		// ------------------
 		// ----- WINDOW -----
 		// ------------------
-
+		
 		super(); // Gets the characteristics from the parent Class JFrame
 		setExtendedState(JFrame.MAXIMIZED_BOTH); // Maximizes the window
 		setUndecorated(true); // Sets the window to Full Screen
@@ -224,59 +224,44 @@ public final class Window extends JFrame {
 		// ----- GENERAL JPANEL'S STRUCTURE -----
 		// --------------------------------------
 
-
-
-		JPanel test = new JPanel(); // A new JPanel's creation for the Window frame
-		test.setBackground(Color.BLACK); // Sets the background's color to black
-		test.setLayout(new BorderLayout()); // Sets a Border Layout to the panel
-		add(test); // Adds the JPanel to the Window frame
+		JPanel panel = new JPanel(); // A new JPanel's creation for the Window frame
+		panel.setBackground(Color.BLACK); // Sets the background's color to black
+		panel.setLayout(new BorderLayout()); // Sets a Border Layout to the panel
+		add(panel); // Adds the JPanel to the Window frame
 
 		JLabel imageBackground = new JLabel();
-		imageBackground.setIcon(new ImageIcon("./img/1pp.jpg"));
-
-
+		// imageBackground.setIcon(stage.getPixelArtBackground());
 		
-		Item i1 = new Item("Go to the tent", "blabalbalalbalbablala", false, null, null);
-		ArrayList<Item> il1 = new ArrayList<Item>();
-		il1.add(i1);
-		Stage s1 = new Stage("Tent", "fghkhffghgfkh", il1, imageBackground);
-
-
+		
+		Stage s1 = new Stage("tent");
+		//imageBackground.setIcon(stage.getPixelArtBackground());
+		
 		// ------------------------------------------
 		// ----- EAST BUTTON JPANEL'S STRUCTURE -----
 		// ------------------------------------------
 
-		JPanel testBotones = new JPanel();
-		testBotones.setLayout(new GridLayout(il1.size(), 1));
-		VoidButton b1 = new VoidButton("Get in the fucking tent");
-		VoidButton b2 = new VoidButton("prueba");
-		VoidButton b3 = new VoidButton("prueba");
-		VoidButton b4 = new VoidButton("prueba");
-		VoidButton b5 = new VoidButton("prueba");
-		testBotones.add(b1);
-		testBotones.add(b2);
-		testBotones.add(b3);
-		testBotones.add(b4);
-		testBotones.add(b5);
+		JPanel panelBotones = new JPanel();
+		panelBotones.setLayout(new GridLayout(stage.getItems().size(), 1));
+		for (byte i = 0; i < stage.getItems().size(); i++) {
+			panelBotones.add(stage.getItems().get(i).getButton());
+		}
 
-		JEditorPane testPane = new JEditorPane();
-		testPane.setBackground(Color.BLACK);
-		testPane.setEditable(false);
-		testPane.setForeground(Color.WHITE);
-		testPane.setFont(new Font("Ink Free", Font.PLAIN, 20));
-		testPane.setSize(1920, 200);
-		testPane.setText(stage.getDescription());
-
-		test.add(imageBackground, BorderLayout.CENTER);
-		test.add(testBotones, BorderLayout.EAST);
-		test.add(testPane, BorderLayout.SOUTH);
+		JEditorPane panelPane = new JEditorPane();
+		panelPane.setBackground(Color.BLACK);
+		panelPane.setEditable(false);
+		panelPane.setForeground(Color.WHITE);
+		panelPane.setFont(new Font("Ink Free", Font.PLAIN, 28));
+		panelPane.setSize(1920, 200);
+		panelPane.setText(s1.getDescription());
+		panel.add(imageBackground, BorderLayout.CENTER);
+		panel.add(panelBotones, BorderLayout.EAST);
+		panel.add(panelPane, BorderLayout.SOUTH);
 
 		// -------------------------------
 		// ----- WINDOW'S VISIBILITY -----
 		// -------------------------------
 
-		this.setContentPane(test);
-
+		this.setContentPane(panel);
 
 		setVisible(true); // Makes the window to be visible
 	}
@@ -319,22 +304,7 @@ public final class Window extends JFrame {
 	public static void soundOFF() {
 
 	}
-
-	/* if(Hay partida de bd) {
-			//traigo todos los datos
-		}else { //crea partida por defecto
-			Objeto candilp1=new Objeto(.bd..bd.)
-			Objeto hachap1=new Objeto(.bd..bd.);
-			Objeto espadap2=new Objeto(.bd..bd.)
-					ArrayList objetosp1= {candilp1,hachap1}
-			ArrayList objetosp2= {espadap2}
-			Pantalla p1=new Pantalla(objetosp1 , .bd..bd.)
-			Pantalla p2= new Pantalla(objetosp2 ..bd..)
-			ArrayList pantallas = {p1,p2}
-			juego=new VoidGame(personaje,pantallas, ...,0) <-- 0 es la pantalla en el array por la que vas
-
-		}
-		this.setContentPane(pantallas[pantallaActual]); */
-
+	
+	
 
 }

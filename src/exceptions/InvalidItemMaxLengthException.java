@@ -7,7 +7,7 @@ package exceptions;
 public final class InvalidItemMaxLengthException extends Exception {
 	/**
 	 * InvalidItemMaxLengthException's basic Constructor
-	 * @param msg | The message to be displayed when the exception is threw
+	 * @param msg The message to be displayed when the exception is threw
 	 */
 	public InvalidItemMaxLengthException(String msg) {
 		super(msg);

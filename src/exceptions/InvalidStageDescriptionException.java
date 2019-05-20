@@ -7,7 +7,7 @@ package exceptions;
 public class InvalidStageDescriptionException extends Exception {
 	/**
 	 * InvalidStageDescriptionException's  basic Constructor
-	 * @param msg | The message to be displayed when the exception is threw
+	 * @param msg The message to be displayed when the exception is threw
 	 */
 	public InvalidStageDescriptionException(String msg) {
 		super(msg);

@@ -7,7 +7,7 @@ package exceptions;
 public final class InvalidStageNameException extends Exception {
 	/**
 	 * InvalidStageNameException's basic Constructor
-	 * @param msg | The message to be displayed when the exception is threw
+	 * @param msg The message to be displayed when the exception is threw
 	 */
 	public InvalidStageNameException(String msg) {
 		super(msg);

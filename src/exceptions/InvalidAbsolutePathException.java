@@ -7,7 +7,7 @@ package exceptions;
 public final class InvalidAbsolutePathException extends Exception {
 	/**
 	 * InvalidAbsolutePathException's basic Constructor
-	 * @param msg | The message to be displayed when the exception is threw
+	 * @param msg The message to be displayed when the exception is threw
 	 */
 	public InvalidAbsolutePathException(String msg) {
 		super(msg);

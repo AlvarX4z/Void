@@ -1,12 +1,9 @@
 package game_elements;
 
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.io.File;
-
 import exceptions.InvalidAbsolutePathException;
 import exceptions.InvalidItemDescriptionException;
 import exceptions.InvalidItemNameException;
+import exceptions.InvalidItemNullButton;
 import graphic_interface.VoidButton;
 
 /**
@@ -21,41 +18,32 @@ public class Item {
 
 	private String name; // Item's name
 	private String description; // Item's description
-	private boolean interactive; // If the item is interactive: TRUE if it is, FALSE if it isn't
+	private boolean interactive; // If the item is interactive (can be picked up or used): TRUE if it is, FALSE if it isn't
 	private VoidButton button; // The Item's related button
-	private static File pickingUpSound; // Sound file for picking up items. Null if the item isn't meant to be picked up
-	private static File usingSound; // Sound file for using items. Null if the item isn't meant to be used
-	
+
 	// -------------------------
 	// ----- CONSTRUCTORS ------
 	// -------------------------
 
 	/**
 	 * Item's basic Constructor
-	 * @param name | Item's name
-	 * @param description | Item's description 
-	 * @param interactive | If the item is interactive: TRUE if it is, FALSE if it isn't
-	 * @param pickingUpSound | Sound file for picking up items. Null if the item isn't meant to be picked up
-	 * @param usingSound | Sound file for using items. Null if the item isn't meant to be used
-	 * @throws InvalidItemNameException | Exception related to an invalid blank Item's name
-	 * @throws InvalidItemDescriptionException | Exception related to an invalid blank Item's description
-	 * @throws InvalidAbsolutePathException | Exception related to the use of an absolute path for files
+	 * @param name Item's name
+	 * @param description Item's description 
+	 * @param interactive If the item is interactive: TRUE if it is, FALSE if it isn't
+	 * @param button The Item's related button
+	 * @param pickingUpSound Sound file for picking up items. Null if the item isn't meant to be picked up
+	 * @param usingSound Sound file for using items. Null if the item isn't meant to be used
+	 * @throws InvalidItemNameException Exception related to an invalid blank Item's name
+	 * @throws InvalidItemDescriptionException Exception related to an invalid blank Item's description
+	 * @throws InvalidAbsolutePathException Exception related to the use of an absolute path for files
+	 * @throws InvalidItemNullButton Exception related to an invalid blank Item's button
 	 */
-	public Item(String name, String description, boolean interactive, File pickingUpSound, File usingSound) throws InvalidItemNameException, InvalidItemDescriptionException, InvalidAbsolutePathException {
+	public Item(String name, String description, boolean interactive, VoidButton button) throws InvalidItemNameException, InvalidItemDescriptionException, 
+	InvalidAbsolutePathException, InvalidItemNullButton {
 		this.setName(name);
 		this.setDescription(description);
 		this.setInteractive(interactive); // If the item is interactive: TRUE if it is, FALSE if it isn't
-		this.setPickingUpSound(pickingUpSound);
-		this.setUsingSound(usingSound);
-		button = new VoidButton(this.name);
-		
-		button.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				
-			}
-		});
-		
+		this.setButton(button);
 	}
 
 	// --------------------------------
@@ -72,8 +60,8 @@ public class Item {
 
 	/**
 	 * Sets the Item's name
-	 * @param name | The Item's name
-	 * @throws InvalidItemNameException | Exception related to an invalid blank Item's name
+	 * @param name The Item's name
+	 * @throws InvalidItemNameException Exception related to an invalid blank Item's name
 	 */
 	public void setName(String name) throws InvalidItemNameException {
 		if (!name.equals("")) { // Checks if the Item's name field hasn't a blank value
@@ -93,8 +81,8 @@ public class Item {
 
 	/**
 	 * Sets the Item's description
-	 * @param description | The Item's description
-	 * @throws InvalidItemDescriptionException | Exception related to an invalid blank Item's description
+	 * @param description The Item's description
+	 * @throws InvalidItemDescriptionException Exception related to an invalid blank Item's description
 	 */
 	public void setDescription(String description) throws InvalidItemDescriptionException {
 		if (!description.equals("")) { // Checks if the Item's description field hasn't a blank value
@@ -114,36 +102,32 @@ public class Item {
 
 	/**
 	 * Sets if an Item is interactive 
-	 * @param interactive | TRUE if it is interactive, FALSE if it isn't
+	 * @param interactive TRUE if it is interactive, FALSE if it isn't
 	 */
 	public void setInteractive(boolean interactive) {
 		this.interactive = interactive;
 	}
 	
 	/**
-	 * Sets an Item's picking up sound File
-	 * @param pickingUpSound | The Item's picking up sound File
-	 * @throws InvalidAbsolutePathException | Exception related to the use of an absolute path for files
+	 * Gets an Item's button
+	 * @return The Item's button
 	 */
-	public void setPickingUpSound(File pickingUpSound) throws InvalidAbsolutePathException {
-		if (!pickingUpSound.isAbsolute()) { // Checks if the picking up sound File hasn't an absolute path
-			this.pickingUpSound = pickingUpSound;
-		} else {
-			throw new InvalidAbsolutePathException("You can't use an absolute path for your media files!");
-		}
+	public VoidButton getButton() {
+		return button;
 	}
 	
 	/**
-	 * Sets an Item's using sound File
-	 * @param usingSound | The Item's using sound File
-	 * @throws InvalidAbsolutePathException | Exception related to the use of an absolute path for files
+	 * Sets an Item's button
+	 * @param button The Item's button
+	 * @throws InvalidItemNullButton Exception related to an invalid blank Item's button
 	 */
-	public void setUsingSound(File usingSound) throws InvalidAbsolutePathException {
-		if (!usingSound.isAbsolute()) { // Checks if the using sound File hasn't an absolute path
-			this.usingSound = usingSound;
+	public void setButton(VoidButton button) throws InvalidItemNullButton {
+		if (button != null) {
+			this.button = button;
 		} else {
-			throw new InvalidAbsolutePathException("You can't use an absolute path for your media files!");
+			throw new InvalidItemNullButton("The Item's button can't be a null value!");
 		}
+		
 	}
 
 }
