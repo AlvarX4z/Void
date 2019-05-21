@@ -6,7 +6,6 @@ import java.io.File;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 
 import exceptions.InvalidAbsolutePathException;
 import exceptions.InvalidItemDescriptionException;
@@ -53,10 +52,10 @@ public class Stage {
 	 */
 	public Stage(String name) {
 		switch (name) { // Checks what's the name of the Stage's Object when the constructor is called
-		// ******************************************
-		// ********** 1ST STAGE - THE TENT **********
-		// ******************************************
-		case "tent": 
+		case "tent":
+			// ******************************************
+			// ********** 1ST STAGE - THE TENT **********
+			// ******************************************
 			this.description = "Your name is Randolph Carter.\n"
 					+ "You're a citizen of the city of Arkham (Massachusetts) and a History professor specialised in Indian American culture "
 					+ "at the Mistakonic University.\n"
@@ -70,13 +69,13 @@ public class Stage {
 			Item birds, tent, flashlight, nap; // Declaring the Stage's Items
 			try {
 				birds = new Item("Birds", "It is truly amazing and relaxing the sounds these birds have. I could spend a long time just hearing them.", 
-						false, new VoidButton("Birds")); // Initialising this Stage's first Item
-				tent = new Item("Tent", "Quite a strong and well-built tent. I'm very happy about buying it last month.", false, new VoidButton("Tent")); // Initialising this Stage's second Item
+						false, new VoidButton("Birds")); // Initializing this Stage's first Item
+				tent = new Item("Tent", "Quite a strong and well-built tent. I'm very happy about buying it last month.", false, new VoidButton("Tent")); // Initializing this Stage's second Item
 				flashlight = new Item("Flashlight", "My trustful flashlight. It was an expensive acquisition, but totally worth it. I'm gonna keep it with me",
-						true, new VoidButton("Flashlight")); // Initialising this Stage's third Item
+						true, new VoidButton("Flashlight")); // Initializing this Stage's third Item
 				nap = new Item("Take a nap", "Preparing the tent has exhausted me, I should take a nap and wake up in a while...", false, 
-						new VoidButton("Take a nap")); // Initialising this Stage's fourth Item
-				this.items = new ArrayList<Item>(4); // Initialising the Item ArrayList which will hold the previous Items
+						new VoidButton("Take a nap")); // Initializing this Stage's fourth Item
+				this.items = new ArrayList<Item>(4); // Initializing the Item ArrayList which will hold the previous Items
 				// Adding this Stage's Item to its corresponding ArrayList
 				items.add(birds);
 				items.add(tent); 
@@ -115,10 +114,10 @@ public class Stage {
 				e.getMessage(); // Throws the corresponding exception message if a System error has happened
 			}
 			break;
+		case "forest": 
 			// ********************************************
 			// ********** 2ND STAGE - THE FOREST **********
 			// ********************************************
-		case "forest": 
 			this.description = "Mmmmmm, it looks like I slept more than I wanted to.\n"
 					+ "What is this? It seems to be darker than it should be at this time and there are no noises in the forest.\n"
 					+ "And why is this mist forming? It's getting colder and I've got a strange feeling, I'd better take the path and "
@@ -127,14 +126,14 @@ public class Stage {
 			Item mist, birdsForest, feelingForest, path; // Declaring the Stage's Items
 			try {
 				mist = new Item("Mist", "It isn't the proper season for mists in this area and it makes me feel... unease.", false, 
-						new VoidButton("Mist")); // Initialising this Stage's first Item
+						new VoidButton("Mist")); // Initializing this Stage's first Item
 				birdsForest = new Item("Birds?", "There aren't any noises from the sparrows and swallows, a very strange fact in this forest.", 
-						false, new VoidButton("Birds?")); // Initialising this Stage's second Item
+						false, new VoidButton("Birds?")); // Initializing this Stage's second Item
 				feelingForest = new Item("Feeling", "I don't know exactly why, but I've got a strange feeling about this place.", false, 
-						new VoidButton("Feeling")); // Initialising this Stage's third Item
+						new VoidButton("Feeling")); // Initializing this Stage's third Item
 				path = new Item("Path", "I should hurry and get to my car before it gets any darker and makes my way harder.", false, 
-						new VoidButton("Path")); // Initialising this Stage's fourth Item
-				this.items = new ArrayList<Item>(4); // Initialising the Item ArrayList which will hold the previous Items
+						new VoidButton("Path")); // Initializing this Stage's fourth Item
+				this.items = new ArrayList<Item>(4); // Initializing the Item ArrayList which will hold the previous Items
 				// Adding this Stage's Item to its corresponding ArrayList
 				items.add(mist); 
 				items.add(birdsForest); 
@@ -173,10 +172,10 @@ public class Stage {
 				e.getMessage(); // Throws the corresponding exception message if a System error has happened
 			}
 			break;
+		case "house": 
 			// ****************************************************************
 			// ********** 3RD STAGE - THE HOUSE SEEN FROM THE FOREST **********
 			// ****************************************************************
-		case "house": 
 			this.description = "Damn, it got darker and I lost my way to the car. I've been already wandering for 30 minutes...\n"
 					+ "Ouch! I tripped onto something and I fell... Hmmm? Why is there a pavimented path here?\n"
 					+ "Maybe it leads to some interesting place, best chance I will find someone who can help me.\n\n"
@@ -186,14 +185,14 @@ public class Stage {
 			Item pavimentedPath, darkness, light, house; // Declaring the Stage's Items
 			try {
 				pavimentedPath = new Item("Pavimented Path", "This is a stone pavimented path. It may look odd, but this path feels like it "
-						+ "doesn't belong to this forest.", false, new VoidButton("Pavimented Path")); // Initialising this Stage's first Item
+						+ "doesn't belong to this forest.", false, new VoidButton("Pavimented Path")); // Initializing this Stage's first Item
 				darkness = new Item("Darkness", "The forest trully gets scarier at night. I wonder if this could be more dangerous than I've "
-						+ "first ever thought...", false, new VoidButton("Darkness")); // Initialising this Stage's second Item
+						+ "first ever thought...", false, new VoidButton("Darkness")); // Initializing this Stage's second Item
 				light = new Item("Light", "When I look at the light, I feel like something is urging me to get closer to it.", false, 
-						new VoidButton("Light")); // Initialising this Stage's third Item
+						new VoidButton("Light")); // Initializing this Stage's third Item
 				house = new Item("House", "The house's still far from where I stand, but I'd say it looks like an old mountain cabin. That "
-						+ "place is my goal right now", false, new VoidButton("House")); // Initialising this Stage's fourth Item
-				this.items = new ArrayList<Item>(4); // Initialising the Item ArrayList which will hold the previous Items
+						+ "place is my goal right now", false, new VoidButton("House")); // Initializing this Stage's fourth Item
+				this.items = new ArrayList<Item>(4); // Initializing the Item ArrayList which will hold the previous Items
 				// Adding this Stage's Item to its corresponding ArrayList
 				items.add(pavimentedPath); 
 				items.add(darkness); 
@@ -232,10 +231,10 @@ public class Stage {
 				e.getMessage(); // Throws the corresponding exception message if a System error has happened
 			}
 			break;
+		case "outdoors": 
 			// ******************************************************
 			// ********** 4TH STAGE - THE HOUSE'S OUTDOORS **********
 			// ******************************************************
-		case "outdoors": 
 			this.description = "I was right! It's an old cabin after all... Very old, indeed.\n"
 					+ "The house seems to be abandoned for a very long time and there aren't any lights except for the "
 					+ "attic's one.\n"
@@ -244,12 +243,12 @@ public class Stage {
 			Item wall, windows, entrance; // Declaring the Stage's Items
 			try {
 				wall = new Item("Wall", "This wall looks pretty damaged and abandoned for a long time. There are breaches on the stone and "
-						+ "mold on it.", false, new VoidButton("Wall")); // Initialising this Stage's first Item
+						+ "mold on it.", false, new VoidButton("Wall")); // Initializing this Stage's first Item
 				windows = new Item("Windows", "These windows are as damaged as the walls... The glass is either broken or dirty.", false, 
-						new VoidButton("Windows")); // Initialising this Stage's second Item
+						new VoidButton("Windows")); // Initializing this Stage's second Item
 				entrance = new Item("Entrance", "I believe that this house's entrance is over there. Let's check it.", false, 
-						new VoidButton("Entrance")); // Initialising this Stage's third Item
-				this.items = new ArrayList<Item>(3); // Initialising the Item ArrayList which will hold the previous Items
+						new VoidButton("Entrance")); // Initializing this Stage's third Item
+				this.items = new ArrayList<Item>(3); // Initializing the Item ArrayList which will hold the previous Items
 				// Adding this Stage's Item to its corresponding ArrayList
 				items.add(wall); 
 				items.add(windows); 
@@ -280,10 +279,10 @@ public class Stage {
 				e.getMessage(); // Throws the corresponding exception message if a System error has happened
 			}
 			break;
+		case "entrance":
 			// ******************************************************
 			// ********** 5TH STAGE - THE HOUSE'S ENTRANCE **********
 			// ******************************************************
-		case "entrance":
 			this.description = "I've found the entrance! Although there's no door to knock on it and it's pitch black. I "
 					+ "did the right thing picking my flashlight up before at my tent...\n"
 					+ "Hmmm, I guess I can shout if there's someone in here before coming in.\n"; // Stage's context to be displayed in the JEditorPane
@@ -291,11 +290,11 @@ public class Stage {
 			Item threshold, shout, comeIn; // Declaring the Stage's Items
 			try {
 				threshold = new Item("Threshold", "Definitely there was once a door here... Hmmm? Irregular wood pieces? Looks like the "
-						+ "door was smashed somehow?", false, new VoidButton("Threshold")); // Initialising this Stage's first Item
+						+ "door was smashed somehow?", false, new VoidButton("Threshold")); // Initializing this Stage's first Item
 				shout = new Item("Shout", "\t- Hello? Anyone here? I got lost in the forest and discovered this place! May I come in?...\n\n"
-						+ "No response from anyone. No surprise either.",  false, new VoidButton("Shout")); // Initialising this Stage's second Item
-				comeIn = new Item("Come in", "Well, time to come in. Glad I have my flashlight with me!", false, new VoidButton("Come in")); // Initialising this Stage's third Item
-				this.items = new ArrayList<Item>(3); // Initialising the Item ArrayList which will hold the previous Items
+						+ "No response from anyone. No surprise either.",  false, new VoidButton("Shout")); // Initializing this Stage's second Item
+				comeIn = new Item("Come in", "Well, time to come in. Glad I have my flashlight with me!", false, new VoidButton("Come in")); // Initializing this Stage's third Item
+				this.items = new ArrayList<Item>(3); // Initializing the Item ArrayList which will hold the previous Items
 				// Adding this Stage's Item to its corresponding ArrayList
 				items.add(threshold); 
 				items.add(shout); 
@@ -326,10 +325,10 @@ public class Stage {
 				e.getMessage(); // Throws the corresponding exception message if a System error has happened
 			}
 			break;
+		case "hall": 
 			// ***********************************************************
 			// ********** 6TH STAGE - THE HOUSE'S HALL - PART 1 **********
 			// ***********************************************************
-		case "hall": 
 			this.description = "Inside the house looks no better than its outdoors. The place seems to be built out of wood, rotten now.\n"
 					+ "I can see a door to my left and some stairs at the end of this hall, though heading downstairs there are a lot of "
 					+ "debris impending my way. If I want to use the stairs, I can only go upstairs.\n"; // Stage's context to be displayed in the JEditorPane
@@ -337,12 +336,12 @@ public class Stage {
 			Item door, lightStairs, stairs; // Declaring the Stage's Items
 			try {
 				door = new Item("Door", "A wooden locked door. I can see there's a keyhole under the pommel. Maybe is there a key somewhere?",
-						false, new VoidButton("Door")); // Initialising this Stage's first Item
+						false, new VoidButton("Door")); // Initializing this Stage's first Item
 				lightStairs = new Item("Light", "The light at the hall's end... That must be the light coming from the attic I saw before!", 
-						false, new VoidButton("Light")); // Initialising this Stage's second Item
+						false, new VoidButton("Light")); // Initializing this Stage's second Item
 				stairs = new Item("Stairs", "The wooden steps seem to be rotten as well. I must be careful going upstairs! It could be very "
-						+ "hurtful to fall down in this place.", false, new VoidButton("Stairs")); // Initialising this Stage's third Item
-				this.items = new ArrayList<Item>(3); // Initialising the Item ArrayList which will hold the previous Items
+						+ "hurtful to fall down in this place.", false, new VoidButton("Stairs")); // Initializing this Stage's third Item
+				this.items = new ArrayList<Item>(3); // Initializing the Item ArrayList which will hold the previous Items
 				// Adding this Stage's Item to its corresponding ArrayList
 				items.add(door); 
 				items.add(lightStairs); 
@@ -373,10 +372,10 @@ public class Stage {
 				e.getMessage(); // Throws the corresponding exception message if a System error has happened
 			}
 			break;
+		case "attic":
 			// ***************************************
 			// ********** 7TH STAGE - ATTIC **********
 			// ***************************************
-		case "attic":
 			this.description = "*\tCough**Cough*.\n\n"
 					+ "This attic is dust-filled! It's hard to breathe in here without coughing.\n"
 					+ "Hmmm? The light at the end has faded out? I should check what's in there."; // Stage's context to be displayed in the JEditorPane
@@ -384,11 +383,11 @@ public class Stage {
 			Item dust, floor, check; // Declaring the Stage's Items
 			try {
 				dust = new Item("Dust", "This dust confirms that nobody has been living here for a long, long time...", false, 
-						new VoidButton("Dust")); // Initialising this Stage's first Item
+						new VoidButton("Dust")); // Initializing this Stage's first Item
 				floor = new Item("Floor", "Are there dustless are on the floor? And... with a foot's shape? May it be that "
-						+ "there's someone here after all?", false, new VoidButton("Floor")); // Initialising this Stage's second Item
-				check = new Item("Check light", "Let's find out what's in there.", false, new VoidButton("Check light")); // Initialising this Stage's third Item
-				this.items = new ArrayList<Item>(3); // Initialising the Item ArrayList which will hold the previous Items
+						+ "there's someone here after all?", false, new VoidButton("Floor")); // Initializing this Stage's second Item
+				check = new Item("Check light", "Let's find out what's in there.", false, new VoidButton("Check light")); // Initializing this Stage's third Item
+				this.items = new ArrayList<Item>(3); // Initializing the Item ArrayList which will hold the previous Items
 				// Adding this Stage's Item to its corresponding ArrayList
 				items.add(dust); 
 				items.add(floor); 
@@ -419,26 +418,26 @@ public class Stage {
 				e.getMessage(); // Throws the corresponding exception message if a System error has happened
 			}
 			break;
+		case "lantern": 
 			// *****************************************
 			// ********** 8TH STAGE - LANTERN **********
 			// *****************************************
-		case "lantern": 
 			this.description = "There's a brush and a lantern on this carpet-covered box. Could this be this lantern turned on just a "
 					+ "moment ago?\n"; // Stage's context to be displayed in the JEditorPane
 			this.pixelArtBackground = new ImageIcon("./img/8p.jpg"); // Setting the Stage's pixel-art background
 			Item carpet, brush, touchLantern, smashLantern; // Declaring the Stage's Items
 			try {
 				carpet = new Item("Carpet", "This carpet covers this big box, but dust surely covers this carpet.", false, 
-						new VoidButton("Carpet")); // Initialising this Stage's first Item
+						new VoidButton("Carpet")); // Initializing this Stage's first Item
 				brush = new Item("Brush", "Such an odd object in this place. Nothing remarkable about it.", false, 
-						new VoidButton("Brush")); // Initialising this Stage's second Item
+						new VoidButton("Brush")); // Initializing this Stage's second Item
 				touchLantern = new Item("Touch lantern", "Was this turned on just bef...?\n\n"
 						+ "OUCH! It's very hot to be touched by my bare hand!\n"
 						+ "Hmmm, when I touched it, I noticed that there's something metallic and loose inside "
-						+ "the lantern. I wonder if I should smash it...", false, new VoidButton("Touch lantern")); // Initialising this Stage's third Item
+						+ "the lantern. I wonder if I should smash it...", false, new VoidButton("Touch lantern")); // Initializing this Stage's third Item
 				smashLantern = new Item("Smash lantern", "Let's see what's inside!\n\n"
-						+ "*CRUSH*\n\nLook at this! A key!", true, new VoidButton("Smash light")); // Initialising this Stage's fourth Item
-				this.items = new ArrayList<Item>(4); // Initialising the Item ArrayList which will hold the previous Items
+						+ "*CRUSH*\n\nLook at this! A key!", true, new VoidButton("Smash light")); // Initializing this Stage's fourth Item
+				this.items = new ArrayList<Item>(4); // Initializing the Item ArrayList which will hold the previous Items
 				// Adding this Stage's Item to its corresponding ArrayList
 				items.add(carpet); 
 				items.add(brush); 
@@ -477,10 +476,10 @@ public class Stage {
 				e.getMessage(); // Throws the corresponding exception message if a System error has happened
 			}
 			break;
+		case "key": 
 			// ************************************************
 			// ********** 9TH STAGE - KEY AND LETTER **********
 			// ************************************************
-		case "key": 
 			this.description = "There's a key inside the smashed lantern! And... a letter? How hasn't this got burned by the "
 					+ "lantern?\nPretty odd, let's see what I can find out."; // Stage's context to be displayed in the JEditorPane
 			this.pixelArtBackground = new ImageIcon("./img/9p.jpg"); // Setting the Stage's pixel-art background
@@ -488,15 +487,15 @@ public class Stage {
 			try {
 				key = new Item("Key", "A little rusted iron key. Why isn't the key hot as the lantern?...\n"
 						+ "Anyways, I bet this key opens the door I discovered in the hall downstairs. I'm sure it's worth a shot", 
-						true, new VoidButton("Key")); // Initialising this Stage's first Item
+						true, new VoidButton("Key")); // Initializing this Stage's first Item
 				letter = new Item("Letter", "This letter is not burned, but a little charred... There's still a legible part...\n\n"
 						+ "\t... our God ...\n\t................ we're nothing ...\n\twill return soon .....................\n\n"
 						+ "What? This letter makes no sense. I don't get the meaning of this!\n"
-						+ "Hmmmm? Do I hear something?", false, new VoidButton("Letter")); // Initialising this Stage's second Item
+						+ "Hmmmm? Do I hear something?", false, new VoidButton("Letter")); // Initializing this Stage's second Item
 				footsteps = new Item("Footsteps", "That noise... sounds like footsteps!\n"
 						+ "I must hide behind the box, I don't know if it's someone friendly after all I've seen\n", false, 
-						new VoidButton("Footsteps")); // Initialising this Stage's third Item
-				this.items = new ArrayList<Item>(3); // Initialising the Item ArrayList which will hold the previous Items
+						new VoidButton("Footsteps")); // Initializing this Stage's third Item
+				this.items = new ArrayList<Item>(3); // Initializing the Item ArrayList which will hold the previous Items
 				// Adding this Stage's Item to its corresponding ArrayList
 				items.add(key); 
 				items.add(letter); 
@@ -527,10 +526,10 @@ public class Stage {
 				e.getMessage(); // Throws the corresponding exception message if a System error has happened
 			}	
 			break;
+		case "acolyte": 
 			// **********************************************
 			// ********** 10TH STAGE - THE ACOLYTE **********
 			// **********************************************
-		case "acolyte": 
 			this.description = "WHAT? I didn't expect someone wearing a robe and chanting some sinister chores...\n"
 					+ "What is he saying?\n\n"
 					+ "\t'Ph'nglui mglw'nafh Cthulhu R'lyeh wgah'nagl fhtagn'\n\n"
@@ -541,13 +540,13 @@ public class Stage {
 			Item acolyte, crow, sneak; // Declaring the Stage's Items
 			try {
 				acolyte = new Item("Acolyte", "A mad man chanting in some strange language. I wonder what he's saying...\n", false, 
-						new VoidButton("Acolyte")); // Initialising this Stage's first Item
+						new VoidButton("Acolyte")); // Initializing this Stage's first Item
 				crow = new Item("Crow", "The bird I saw seems to be a big crow. It has landed on the windowsill and the "
 						+ "acolyte looks at it truly fascinated and absorted.\n"
-						+ "This is my chance to sneak from this place out!", false, new VoidButton("Crow")); // Initialising this Stage's second Item
+						+ "This is my chance to sneak from this place out!", false, new VoidButton("Crow")); // Initializing this Stage's second Item
 				sneak = new Item("Sneak out", "I must remain in silence and be careful. I can do this!", false, 
-						new VoidButton("Sneak out")); // Initialising this Stage's third Item
-				this.items = new ArrayList<Item>(3); // Initialising the Item ArrayList which will hold the previous Items
+						new VoidButton("Sneak out")); // Initializing this Stage's third Item
+				this.items = new ArrayList<Item>(3); // Initializing the Item ArrayList which will hold the previous Items
 				// Adding this Stage's Item to its corresponding ArrayList
 				items.add(acolyte); 
 				items.add(crow); 
@@ -578,26 +577,398 @@ public class Stage {
 				e.getMessage(); // Throws the corresponding exception message if a System error has happened
 			}	
 			break;
+		case "hall2": 
 			// ************************************************************
 			// ********** 11TH STAGE - THE HOUSE'S HALL - PART 2 **********
 			// ************************************************************
-		case "hall2": 
+			this.description = "That was close! The acolyte didn't notice me and I hope he doen't come downstairs.\n"
+					+ "I must hurry and try to open that door!"; // Stage's context to be displayed in the JEditorPane
+			this.pixelArtBackground = new ImageIcon("./img/6p.jpg"); // Setting the Stage's pixel-art background
+			Item stairs2, keyhole, openDoor; // Declaring the Stage's Items
+			try {
+				stairs2 = new Item("Stairs", "The acolyte's still upstairs. I should avoid getting near the stairs at any cost!", 
+						false, new VoidButton("Stairs")); // Initializing this Stage's first Item
+				keyhole = new Item("Keyhole", "I knew it! The key I picked up before fits perfectly in it. Now I can open the door!", 
+						false, new VoidButton("Keyhole")); // Initializing this Stage's second Item
+				openDoor = new Item("Open the door", "I hope it doesn't make any cracking noises at all while opening it...", false, 
+						new VoidButton("Open the door")); // Initializing this Stage's third Item
+				this.items = new ArrayList<Item>(3); // Initializing the Item ArrayList which will hold the previous Items
+				// Adding this Stage's Item to its corresponding ArrayList
+				items.add(stairs2); 
+				items.add(keyhole); 
+				items.add(openDoor); 
+				// ***** 1ST ITEM - STAIRS *****
+				items.get(0).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the Stairs Button Item
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						description = items.get(0).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
+					}
+				});
+				// ***** 2ND ITEM - KEYHOLE *****
+				items.get(1).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the Keyhole Button Item
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						description = items.get(1).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
+					}
+				});
+				// ***** 3RD ITEM - OPEN THE DOOR *****
+				items.get(2).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the Open the door Button Item
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						//TODO SET STAGE
+						description = items.get(2).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
+					}
+				});
+			} catch (InvalidItemNameException | InvalidItemDescriptionException | InvalidAbsolutePathException | InvalidItemNullButton e) { // Catching related exceptions
+				e.getMessage(); // Throws the corresponding exception message if a System error has happened
+			}	
 			break;
-		case "livingRoom": // 12th: The house's living room
+		case "livingRoom": 
+			// **************************************************
+			// ********** 12TH STAGE - THE LIVING ROOM **********
+			// **************************************************
+			this.description = "What? This looks like a living room and it's quite different from the rest of this dismal house.\n"
+					+ "It even feels warmer... Maybe that acolyte was in here all this time while I was exploring the house?\n"
+					+ "I should explore and see what I can find..."; // Stage's context to be displayed in the JEditorPane
+			this.pixelArtBackground = new ImageIcon("./img/12p.jpg"); // Setting the Stage's pixel-art background
+			Item livingRoom, candelabrum, clock, table; // Declaring the Stage's Items
+			try {
+				livingRoom = new Item("Living room", "This room of the house isn't dilapidated as the rest and it even"
+						+ "looks from... another century?\n"
+						+ "These pieces of furniture and the painted walls aren't contemporary, that's for sure.", false, 
+						new VoidButton("Living room")); // Initializing this Stage's first Item
+				candelabrum = new Item("Candelabrum", "A metallic candelabrum with five lighted, non-consumed candles on it.\n"
+						+ "This helps me to get a warmer feeling.", false, new VoidButton("Candelabrum")); // Initializing this Stage's second Item
+				clock = new Item("Clock", "Such a very old, elegant and fascinating clock. It looks polished and new, but how "
+						+ "can that be possible?\n"
+						+ "I just noticed it isn't ticking the time, that's strange. The watch hands are stopped at the 2:06 time...\n\n"
+						+ "I wish I could take this to my house, what a pity", false, new VoidButton("Clock")); // Initializing this Stage's third Item
+				table = new Item("Table", "There's a little wooden table at the clock's left side. It's worth to check if there's something "
+						+ "on it.", false, new VoidButton("Table")); // Initializing this Stage's fourth Item
+				this.items = new ArrayList<Item>(4); // Initializing the Item ArrayList which will hold the previous Items
+				// Adding this Stage's Item to its corresponding ArrayList
+				items.add(livingRoom); 
+				items.add(candelabrum); 
+				items.add(clock); 
+				items.add(table); 
+				// ***** 1ST ITEM - LIVING ROOM *****
+				items.get(0).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the Living room Button Item
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						description = items.get(0).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
+					}
+				});
+				// ***** 2ND ITEM - CANDELABRUM *****
+				items.get(1).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the Candelabrum Button Item
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						description = items.get(1).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
+					}
+				});
+				// ***** 3RD ITEM - CLOCK *****
+				items.get(2).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the Clock Button Item
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						description = items.get(2).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
+					}
+				});
+				// ***** 4TH ITEM - TABLE *****
+				items.get(3).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the Table Button Item
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						//TODO SET STAGE
+						description = items.get(3).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
+					}
+				});
+			} catch (InvalidItemNameException | InvalidItemDescriptionException | InvalidAbsolutePathException | InvalidItemNullButton e) { // Catching related exceptions
+				e.getMessage(); // Throws the corresponding exception message if a System error has happened
+			}
 			break;
-		case "gun": // 13th: The gun on the table
+		case "pistol": 
+			// *********************************************
+			// ********** 13TH STAGE - THE PISTOL **********
+			// *********************************************
+			this.description = "There seems to be a blanket covering some objects under it. I wonder what is there beneath it...\n\n"
+					+ "WHOA! A SKULL! I hope it is a fake one... And what do I have here?"; // Stage's context to be displayed in the JEditorPane
+			this.pixelArtBackground = new ImageIcon("./img/13p.jpg"); // Setting the Stage's pixel-art background
+			Item skull, bottle, map, pistol; // Declaring the Stage's Items
+			try {
+				skull = new Item("Skull", "Damn, after examining the skull, I discovered it isn't fake, but a real one...\n"
+						+ "Did that acolyte killed someone? Maybe someone lost in the forest like me...?\n"
+						+ "I must stop thinking about this and focus!", false, new VoidButton("Skull")); // Initializing this Stage's first Item
+				bottle = new Item("Bottle", "An elegant glass bottle. I wonder what liquid does it contain, though it looks like alcohol.\n\n"
+						+ "*SNIFF SNIFF*\n\n"
+						+ "This liquor is an old rum! Not very frequent to see.", false, new VoidButton("Bottle")); // Initializing this Stage's second Item
+				map = new Item("Map", "Under the skull I can find an old map. I must be careful with the paper's status as it's very fragile.\n"
+						+ "Hmmm... It pinpoints to a small island in the Pacific Ocean called Ponapé... There seems to be an almost unredable "
+						+ "description in Spanish:\n\n"
+						+ "\t'... Según los locales, la expedición de Alonso de Salazar de 1526 resultó en muerte cuanto se acercaron a las coordenadas donde"
+						+ "se encontraba la ciudad de R'lyeh hundida.\n"
+						+ "La búsqueda de tesoros en alta mar y cuya codicia desencadenó la ira del Antiguo Dios ...\n\n"
+						+ "My Spanish is very rusted, but I believe that I can figure the main meaning out...\n"
+						+ "Something about an expedition, a sunken city and some Old God? What an odd situation...", false, 
+						new VoidButton("Map")); // Initializing this Stage's third Item
+				pistol = new Item("Pistol", "There's an old pistol on the map. It looks like one from the 16th century, using powder and everything.\n"
+						+ "It's in a pretty new shape and... \n\n"
+						+ "\t*SNIFF SNIFF*\n\n"
+						+ "The gun's loaded, I can tell this from the smell. I'd better pick it up, it could be useful...\n\n"
+						+ "What is that screeching I hear?", true, new VoidButton("Pistol")); // Initializing this Stage's fourth Item
+				this.items = new ArrayList<Item>(4); // Initializing the Item ArrayList which will hold the previous Items
+				// Adding this Stage's Item to its corresponding ArrayList
+				items.add(skull); 
+				items.add(bottle); 
+				items.add(map); 
+				items.add(pistol); 
+				// ***** 1ST ITEM - SKULL *****
+				items.get(0).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the Skull Button Item
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						description = items.get(0).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
+					}
+				});
+				// ***** 2ND ITEM - BOTTLE *****
+				items.get(1).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the Bottle Button Item
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						description = items.get(1).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
+					}
+				});
+				// ***** 3RD ITEM - MAP *****
+				items.get(2).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the Map Button Item
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						description = items.get(2).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
+					}
+				});
+				// ***** 4TH ITEM - PISTOL *****
+				items.get(3).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the Pistol Button Item
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						//TODO SET STAGE
+						description = items.get(3).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
+					}
+				});
+			} catch (InvalidItemNameException | InvalidItemDescriptionException | InvalidAbsolutePathException | InvalidItemNullButton e) { // Catching related exceptions
+				e.getMessage(); // Throws the corresponding exception message if a System error has happened
+			}
 			break;
-		case "painting": // 14th: The strange painting hanging on the living room's wall
+		case "painting": 
+			// ***********************************************
+			// ********** 14TH STAGE - THE PAINTING **********
+			// ***********************************************
+			this.description = "I noticed a painting hanged on the wall just over the table I examined. I wonder what depicts the picture...\n"; // Stage's context to be displayed in the JEditorPane
+			this.pixelArtBackground = new ImageIcon("./img/14p.jpg"); // Setting the Stage's pixel-art background
+			Item painting, paintingDescription, rlyeh, cthulhuPainting; // Declaring the Stage's Items
+			try {
+				painting = new Item("Painting", "A painting in such a good condition, although a terrifying image is represented.\n"
+						+ "Hmmmm? There's a description carved at the frame's bottom...\n", false, new VoidButton("Painting")); // Initializing this Stage's first Item
+				paintingDescription = new Item("Description", "The description says:\n"
+						+ "\t'Ph'nglui mglw'nafh Cthulhu R'lyeh wgah'nagl fhtagn'\n"
+						+ "\t'In his house at R'lyeh, dead Cthulhu waits dreaming'\n\n"
+						+ "R'lyeh? That's the map's location! May this Cthulhu be the representation of that Old God?", false, 
+						new VoidButton("Description")); // Initializing this Stage's second Item
+				rlyeh = new Item("R'lyeh", "According to the map, this city is located at the Pacific Ocean... Is this God the sovereign of this forgotten "
+						+ "civilization?\n"
+						+ "Is this God sleeping at this sunken city according to the tale?\n", false, new VoidButton("R'lyeh")); // Initializing this Stage's third Item
+				cthulhuPainting = new Item("Cthulhu", "Is that a depicting image of said Old God? Such a terrifying being, it looks like a metaphorical "
+						+ "ending of life...\n"
+						+ "Might it be a Death God for this civilization?\n", false, new VoidButton("Cthulhu")); // Initializing this Stage's fourth Item
+				this.items = new ArrayList<Item>(4); // Initializing the Item ArrayList which will hold the previous Items
+				// Adding this Stage's Item to its corresponding ArrayList
+				items.add(painting); 
+				items.add(paintingDescription); 
+				items.add(rlyeh); 
+				items.add(cthulhuPainting); 
+				// ***** 1ST ITEM - PAINTING *****
+				items.get(0).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the Painting Button Item
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						description = items.get(0).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
+					}
+				});
+				// ***** 2ND ITEM - DESCRIPTION *****
+				items.get(1).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the Description Button Item
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						description = items.get(1).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
+					}
+				});
+				// ***** 3RD ITEM - R'LYEH *****
+				items.get(2).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the R'lyeh Button Item
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						description = items.get(2).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
+					}
+				});
+				// ***** 4TH ITEM - CTHULHU *****
+				items.get(3).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the Cthulhu Button Item
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						//TODO SET STAGE
+						description = items.get(3).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
+					}
+				});
+			} catch (InvalidItemNameException | InvalidItemDescriptionException | InvalidAbsolutePathException | InvalidItemNullButton e) { // Catching related exceptions
+				e.getMessage(); // Throws the corresponding exception message if a System error has happened
+			}
 			break;
-		case "monster": // 15th: The attacking monster
+		case "monster": 
+			// **********************************************
+			// ********** 15TH STAGE - THE MONSTER **********
+			// **********************************************
+			this.description = "That painting made feel scared...\n\n"
+					+ "\t*SREECH*\n\n"
+					+ "DAMN, WHAT IS THAT SOUND? AND WHAT IS THAT CREATURE?\n"
+					+ "IT'S A MONSTER"; // Stage's context to be displayed in the JEditorPane
+			this.pixelArtBackground = new ImageIcon("./img/15p.jpg"); // Setting the Stage's pixel-art background
+			Item monster, shoot; // Declaring the Stage's Items
+			try {
+				monster = new Item("Monster", "What is that creature? It has a human shape, but it isn't human at all...\n"
+						+ "It's about to jump at me and its claws seem very sharp, I better shoot at it before it gets me!\n", false, 
+						new VoidButton("Monster")); // Initializing this Stage's first Item
+				shoot = new Item("Shoot the monster", "It's it or me!\n\n"
+						+ "\t*BANG*\n\n"
+						+ "DAMN, I'm very nervous and I feel the adrenaline's strain, I think I'm fainting...\n", false, new VoidButton("Shoot the monster")); // Initializing this Stage's second Item
+				this.items = new ArrayList<Item>(2); // Initializing the Item ArrayList which will hold the previous Items
+				// Adding this Stage's Item to its corresponding ArrayList
+				items.add(monster);
+				items.add(shoot);
+				// ***** 1ST ITEM - MONSTER *****
+				items.get(0).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the Monster Button Item
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						description = items.get(0).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
+					}
+				});
+				// ***** 2ND ITEM - SHOOT THE MONSTER *****
+				items.get(1).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the Shoot the monster Button Item
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						//TODO SET STAGE
+						description = items.get(1).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
+					}
+				});
+			} catch (InvalidItemNameException | InvalidItemDescriptionException | InvalidAbsolutePathException | InvalidItemNullButton e) { // Catching related exceptions
+				e.getMessage(); // Throws the corresponding exception message if a System error has happened
+			}
 			break;
-		case "blackness": // 16th: The player fainted
+		case "blackness":
+			// ********************************************
+			// ********** 16TH STAGE - BLACKNESS **********
+			// ********************************************
+			this.description = "Mmmmmm... Ohhhh...\n\n"
+					+ ".........\n\n"
+					+ "My head aches a lot... What's that sound?...\n"
+					+ "I should open my eyes and see what happened...\n"; // Stage's context to be displayed in the JEditorPane
+			this.pixelArtBackground = new ImageIcon("./img/16p.jpg"); // Setting the Stage's pixel-art background
+			Item sound, eyes; // Declaring the Stage's Items
+			try {
+				sound = new Item("Sound", "It sounds like the sea's waves... But that cannot be!\n"
+						+ "I'm miles away from the shore!\n"
+						+ "And it sounds like a big mass of water is being moved...", false, new VoidButton("Sound")); // Initializing this Stage's first Item
+				eyes = new Item("Open eyes", "Let's see what's going on\n", false, new VoidButton("Open eyes")); // Initializing this Stage's second Item
+				this.items = new ArrayList<Item>(2); // Initializing the Item ArrayList which will hold the previous Items
+				// Adding this Stage's Item to its corresponding ArrayList
+				items.add(sound);
+				items.add(eyes);
+				// ***** 1ST ITEM - SOUND *****
+				items.get(0).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the Sound Button Item
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						description = items.get(0).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
+					}
+				});
+				// ***** 2ND ITEM - OPEN EYES *****
+				items.get(1).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the Open eyes Button Item
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						//TODO SET STAGE
+						description = items.get(1).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
+					}
+				});
+			} catch (InvalidItemNameException | InvalidItemDescriptionException | InvalidAbsolutePathException | InvalidItemNullButton e) { // Catching related exceptions
+				e.getMessage(); // Throws the corresponding exception message if a System error has happened
+			}
 			break;
-		case "eye": // 17th: The player's scared eye image
+		case "revelation":
+			// *************************************************
+			// ********** 17TH STAGE - THE REVELATION **********
+			// *************************************************
+			this.description = "Why am I at the shore? This doesn't even look like Massachussets...\n\n"
+					+ "WHAT?\n"
+					+ "THIS CAN'T BE REAL!\n"
+					+ "IT CAN'T EXIST\n"; // Stage's context to be displayed in the JEditorPane
+			this.pixelArtBackground = new ImageIcon("./img/17p.jpg"); // Setting the Stage's pixel-art background
+			Item lookSea; // Declaring the Stage's Items
+			try {
+				lookSea = new Item("Look at the sea", "IS IT A REAL BEING!? ISN'T IT A TALE!?\n", false, new VoidButton("Look at the sea")); // Initializing this Stage's first Item
+				this.items = new ArrayList<Item>(1); // Initializing the Item ArrayList which will hold the previous Items
+				items.add(lookSea); // Adding this Stage's Item to its corresponding ArrayList
+				// ***** 1ST ITEM - LOOK AT THE SEA *****
+				items.get(0).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the Look at the sea Button Item
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						//TODO SET STAGE
+						description = items.get(0).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
+					}
+				});
+			} catch (InvalidItemNameException | InvalidItemDescriptionException | InvalidAbsolutePathException | InvalidItemNullButton e) { // Catching related exceptions
+				e.getMessage(); // Throws the corresponding exception message if a System error has happened
+			}
 			break;
-		case "beach": // 18th: The player's contemplating the end
+		case "old one":
+			// ****************************************************
+			// ********** 18TH STAGE - THE GREAT OLD ONE **********
+			// ****************************************************
+			this.description = "The painting said he was dreaming, has this being AWOKEN!?\n\n"
+					+ ".........\n\n"
+					+ "It's doom incarnated and mankind is nothing against it...\n\n"
+					+ ".........\n\n"
+					+ "WE ARE DOOMED!!\n"; // Stage's context to be displayed in the JEditorPane
+			this.pixelArtBackground = new ImageIcon("./img/18p.jpg"); // Setting the Stage's pixel-art background
+			Item die; // Declaring the Stage's Items
+			try {
+				die = new Item("Die", "The void's coming\n", false, new VoidButton("Die")); // Initializing this Stage's first Item
+				this.items = new ArrayList<Item>(1); // Initializing the Item ArrayList which will hold the previous Items
+				items.add(die); // Adding this Stage's Item to its corresponding ArrayList
+				// ***** 1ST ITEM - DIE *****
+				items.get(0).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the Die Button Item
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						//TODO SET STAGE
+						description = items.get(0).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
+					}
+				});
+			} catch (InvalidItemNameException | InvalidItemDescriptionException | InvalidAbsolutePathException | InvalidItemNullButton e) { // Catching related exceptions
+				e.getMessage(); // Throws the corresponding exception message if a System error has happened
+			}
 			break;
-		case "ending": // 19th: The End (the player didn't pick the gun up)
+		case "void":
+			// *******************************************
+			// ********** 19TH STAGE - THE VOID **********
+			// *******************************************
+			this.description = "CREDITS:\n"
+					+ "---------------\n\n"
+					+ "\tÁlvaro de Francisco Sánchez\n\n"
+					+ "I hope you liked the game!"
+					+ "---------------\n"; // Stage's context to be displayed in the JEditorPane
+			this.pixelArtBackground = new ImageIcon("./img/19p.jpg"); // Setting the Stage's pixel-art background
+			Item theEnd; // Declaring the Stage's Items
+			try {
+				theEnd = new Item("The end", "Game's over!\n", false, new VoidButton("The end")); // Initializing this Stage's first Item
+				this.items = new ArrayList<Item>(1); // Initializing the Item ArrayList which will hold the previous Items
+				items.add(theEnd); // Adding this Stage's Item to its corresponding ArrayList
+				// ***** 1ST ITEM - THE END *****
+				items.get(0).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the The End Button Item
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						//TODO SET STAGE
+						description = items.get(0).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
+					}
+				});
+			} catch (InvalidItemNameException | InvalidItemDescriptionException | InvalidAbsolutePathException | InvalidItemNullButton e) { // Catching related exceptions
+				e.getMessage(); // Throws the corresponding exception message if a System error has happened
+			}
 			break;
 		}
 	}
