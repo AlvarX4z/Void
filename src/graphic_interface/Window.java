@@ -43,8 +43,11 @@ public final class Window extends JFrame {
 	// ----- INTERNAL VARIABLES -----
 	// ------------------------------
 
-	private Stage stage;
-	private Protagonist player;
+	private Stage stage; // The Stage to be displayed in the Window
+	private Protagonist player; // The main character of the game
+	private JPanel buttonsPanel; // A JPane where the interactive buttons are located
+	private JEditorPane textPanel; // A EditorPane where the text will be displayed
+	private JLabel imageBackground; // A JLabel where the image for each Stage will be shown
 
 	// -----------------------
 	// ----- CONSTRUCTOR -----
@@ -52,13 +55,13 @@ public final class Window extends JFrame {
 
 	/**
 	 * Window's basic Constructor
-	 * @throws InvalidAbsolutePathException 
-	 * @throws InvalidItemDescriptionException 
-	 * @throws InvalidItemNameException 
-	 * @throws InvalidItemMinLengthException 
-	 * @throws InvalidItemMaxLengthException 
-	 * @throws InvalidStageDescriptionException 
-	 * @throws InvalidStageNameException 
+	 * @throws InvalidAbsolutePathException Exception related to the use of an absolute path for files
+	 * @throws InvalidItemDescriptionException Exception related to an invalid blank Item's description
+	 * @throws InvalidItemNameException Exception related to an invalid blank Item's name
+	 * @throws InvalidItemMinLengthException Exception threw when a Stage's minimum length is 0 or less
+	 * @throws InvalidItemMaxLengthException Exception threw when surpassing a Stage's maximum length of 5
+	 * @throws InvalidStageDescriptionException Exception related to an invalid blank Stage's description
+	 * @throws InvalidStageNameException Exception related to an invalid blank Stage's name
 	 */
 	public Window() throws InvalidItemNameException, InvalidItemDescriptionException, InvalidAbsolutePathException, InvalidStageNameException, 
 	InvalidStageDescriptionException, InvalidItemMaxLengthException, InvalidItemMinLengthException {
@@ -66,7 +69,7 @@ public final class Window extends JFrame {
 		// ------------------
 		// ----- WINDOW -----
 		// ------------------
-		
+
 		super(); // Gets the characteristics from the parent Class JFrame
 		setExtendedState(JFrame.MAXIMIZED_BOTH); // Maximizes the window
 		setUndecorated(true); // Sets the window to Full Screen
@@ -229,39 +232,32 @@ public final class Window extends JFrame {
 		panel.setLayout(new BorderLayout()); // Sets a Border Layout to the panel
 		add(panel); // Adds the JPanel to the Window frame
 
-		JLabel imageBackground = new JLabel();
-		// imageBackground.setIcon(stage.getPixelArtBackground());
-		
-		
-		Stage s1 = new Stage("tent");
-		//imageBackground.setIcon(stage.getPixelArtBackground());
-		
+		imageBackground = new JLabel(); // A new JLabel's creation for the pixel-art background image
+
+		buttonsPanel = new JPanel(); // A new JLabel's creation for the pixel-art background image
+
 		// ------------------------------------------
 		// ----- EAST BUTTON JPANEL'S STRUCTURE -----
 		// ------------------------------------------
 
-		JPanel panelBotones = new JPanel();
-		panelBotones.setLayout(new GridLayout(stage.getItems().size(), 1));
-		for (byte i = 0; i < stage.getItems().size(); i++) {
-			panelBotones.add(stage.getItems().get(i).getButton());
-		}
+		textPanel = new JEditorPane(); // A new JEditorPane's creation for the text to be displayed
+		textPanel.setBackground(Color.BLACK); // Sets the JEditorPane's background color to black
+		textPanel.setEditable(false); // Disables the JEditorPane's edition
+		textPanel.setForeground(Color.WHITE); // Sets the JEditorPane's font color to white
+		textPanel.setFont(new Font("Ink Free", Font.PLAIN, 28)); // Sets the JEditorPane's font to 'Ink Free', plain style and size 28
 
-		JEditorPane panelPane = new JEditorPane();
-		panelPane.setBackground(Color.BLACK);
-		panelPane.setEditable(false);
-		panelPane.setForeground(Color.WHITE);
-		panelPane.setFont(new Font("Ink Free", Font.PLAIN, 28));
-		panelPane.setSize(1920, 200);
-		panelPane.setText(s1.getDescription());
-		panel.add(imageBackground, BorderLayout.CENTER);
-		panel.add(panelBotones, BorderLayout.EAST);
-		panel.add(panelPane, BorderLayout.SOUTH);
+		panel.add(imageBackground, BorderLayout.CENTER); // Adds the image to main JPanel
+		panel.add(buttonsPanel, BorderLayout.EAST); // Adds the Button JPanel to the main JPanel
+		panel.add(textPanel, BorderLayout.SOUTH); // Adds the JEditorPane to the main JPanel
 
 		// -------------------------------
 		// ----- WINDOW'S VISIBILITY -----
 		// -------------------------------
 
-		this.setContentPane(panel);
+		this.setContentPane(panel); // Sets the main JPanel to the Window
+
+		Stage tent = new Stage("tent", this); // Creates the first Stage Object
+		this.setStage(tent); // Enables the first Stage of the game to be shown due to the setStage function
 
 		setVisible(true); // Makes the window to be visible
 	}
@@ -304,7 +300,32 @@ public final class Window extends JFrame {
 	public static void soundOFF() {
 
 	}
-	
-	
+
+	// ----------------------------------
+	// ----- METHODS AND FUNCTIONS ------
+	// ----------------------------------
+
+	/**
+	 * Gets a JEditorPane Object
+	 * @return A JEditorPane Object
+	 */
+	public JEditorPane getTextPanel() {
+		return textPanel;
+	}
+
+	/**
+	 * Sets a new Stage for playing the game
+	 * @param stage Creates a new Stage
+	 */
+	public void setStage(Stage stage) {
+		buttonsPanel.setLayout(new GridLayout(stage.getItems().size(), 1)); // Creates a Button JPanel for each Stage depending on how many interactive buttons there are
+		buttonsPanel.removeAll(); // Removes all buttons from previous Stages
+		for (byte i = 0; i < stage.getItems().size(); i++) { // A for loop for iterating the ArrayList<Item>
+			buttonsPanel.add(stage.getItems().get(i).getButton()); // Adds each Item Button for each Stage
+		}
+		textPanel.setText(stage.getDescription()); // Sets the initial Stage's description in the JEditorPane
+		imageBackground.setIcon(stage.getPixelArtBackground()); // Sets the Stage's image in the JLabel
+		repaint(); // Repaints the window in order to see the changes
+	}
 
 }

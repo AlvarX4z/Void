@@ -28,7 +28,7 @@ public class Stage {
 	// ----- INTERNAL VARIABLES -----
 	// ------------------------------
 
-	private Window window;
+	private Window window; // The Window Class in which a Stage will be running
 	private String name; // The Stage's name
 	private String description; // The Stage's initial description
 	private ArrayList<Item> items; // The Stage's interactive Items
@@ -49,29 +49,31 @@ public class Stage {
 	/**
 	 * Stage's basic Constructor
 	 * @param name The Stage's name
+	 * @param window The Window Class in which a Stage will be running
 	 */
-	public Stage(String name) {
+	public Stage(String name, Window window) {
+		this.window = window; // Links the window parameter to the Stage's internal variable
 		switch (name) { // Checks what's the name of the Stage's Object when the constructor is called
 		case "tent":
 			// ******************************************
 			// ********** 1ST STAGE - THE TENT **********
 			// ******************************************
 			this.description = "Your name is Randolph Carter.\n"
-					+ "You're a citizen of the city of Arkham (Massachusetts) and a History professor specialised in Indian American culture "
-					+ "at the Mistakonic University.\n"
-					+ "You're currently on vacations and you have decided to spend some time on your favorite hobby: hiking and sleeping in "
-					+ "his tent at nature at the Miskatonic Valley.\n\n"
+					+ "You're a citizen of the city of Arkham (Massachusetts) and a History professor specialised in Indian American culture at the Mistakonic "
+					+ "University.\n"
+					+ "You're currently on vacations and you have decided to spend some time on your favorite hobby: hiking and sleeping in his tent at nature at "
+					+ "the Miskatonic Valley.\n\n"
 					+ "Thus, this story begins...\n\n"
 					+ "------------------------------\n\n"
-					+ "Finally! I finished preparing the tent! It's been quite a tiresome task, but I like the result!"
+					+ "Finally! I've finished preparing the tent! It's been quite a tiresome task, but I like the result!\n"
 					+ "I guess that I can take a nap while I hear the birds chirping."; // Stage's context to be displayed in the JEditorPane
 			this.pixelArtBackground = new ImageIcon("./img/1p.jpg"); // Setting the Stage's pixel-art background
 			Item birds, tent, flashlight, nap; // Declaring the Stage's Items
 			try {
-				birds = new Item("Birds", "It is truly amazing and relaxing the sounds these birds have. I could spend a long time just hearing them.", 
+				birds = new Item("Birds", "It's truly amazing and relaxing the sounds these birds have. I could spend all the afternoon just hearing them.", 
 						false, new VoidButton("Birds")); // Initializing this Stage's first Item
 				tent = new Item("Tent", "Quite a strong and well-built tent. I'm very happy about buying it last month.", false, new VoidButton("Tent")); // Initializing this Stage's second Item
-				flashlight = new Item("Flashlight", "My trustful flashlight. It was an expensive acquisition, but totally worth it. I'm gonna keep it with me",
+				flashlight = new Item("Flashlight", "My trustful flashlight. It was an expensive acquisition, but totally worth it. I'm gonna keep it with me.",
 						true, new VoidButton("Flashlight")); // Initializing this Stage's third Item
 				nap = new Item("Take a nap", "Preparing the tent has exhausted me, I should take a nap and wake up in a while...", false, 
 						new VoidButton("Take a nap")); // Initializing this Stage's fourth Item
@@ -86,6 +88,8 @@ public class Stage {
 					@Override
 					public void mouseClicked(MouseEvent e) {
 						description = items.get(0).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
+						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
 				// ***** 2ND ITEM - TENT *****
@@ -93,6 +97,8 @@ public class Stage {
 					@Override
 					public void mouseClicked(MouseEvent e) {
 						description = items.get(1).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
+						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
 				// ***** 3RD ITEM - FLASHLIGHT *****
@@ -100,6 +106,8 @@ public class Stage {
 					@Override
 					public void mouseClicked(MouseEvent e) {
 						description = items.get(2).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
+						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
 				// ***** 4TH ITEM - TAKE A NAP *****
@@ -107,7 +115,8 @@ public class Stage {
 					@Override
 					public void mouseClicked(MouseEvent e) {
 						description = items.get(3).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
-						//TODO SET STAGE
+						Stage stage = new Stage("forest", window); // Creates the new Stage
+						window.setStage(stage); // Sets the new Stage in the Window
 					}
 				});
 			} catch (InvalidItemNameException | InvalidItemDescriptionException | InvalidAbsolutePathException | InvalidItemNullButton e) { // Catching related exceptions
@@ -118,8 +127,8 @@ public class Stage {
 			// ********************************************
 			// ********** 2ND STAGE - THE FOREST **********
 			// ********************************************
-			this.description = "Mmmmmm, it looks like I slept more than I wanted to.\n"
-					+ "What is this? It seems to be darker than it should be at this time and there are no noises in the forest.\n"
+			this.description = "Mmmmmm, it looks like I slept more than I wanted to.\n\n"
+					+ "What's this? It seems to be darker than it should be at this time and there are no noises in the forest.\n"
 					+ "And why is this mist forming? It's getting colder and I've got a strange feeling, I'd better take the path and "
 					+ "go to my car to pick my jacket up."; // Stage's context to be displayed in the JEditorPane
 			this.pixelArtBackground = new ImageIcon("./img/2p.jpg"); // Setting the Stage's pixel-art background
@@ -144,6 +153,8 @@ public class Stage {
 					@Override
 					public void mouseClicked(MouseEvent e) {
 						description = items.get(0).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
+						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
 				// ***** 2ND ITEM - BIRDS? *****
@@ -151,6 +162,8 @@ public class Stage {
 					@Override
 					public void mouseClicked(MouseEvent e) {
 						description = items.get(1).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
+						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
 				// ***** 3RD ITEM - FEELING *****
@@ -158,6 +171,8 @@ public class Stage {
 					@Override
 					public void mouseClicked(MouseEvent e) {
 						description = items.get(2).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
+						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
 				// ***** 4TH ITEM - PATH *****
@@ -165,7 +180,8 @@ public class Stage {
 					@Override
 					public void mouseClicked(MouseEvent e) {
 						description = items.get(3).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
-						//TODO SET STAGE
+						Stage stage = new Stage("house", window); // Creates the new Stage
+						window.setStage(stage); // Sets the new Stage in the Window
 					}
 				});
 			} catch (InvalidItemNameException | InvalidItemDescriptionException | InvalidAbsolutePathException | InvalidItemNullButton e) { // Catching related exceptions
@@ -177,8 +193,9 @@ public class Stage {
 			// ********** 3RD STAGE - THE HOUSE SEEN FROM THE FOREST **********
 			// ****************************************************************
 			this.description = "Damn, it got darker and I lost my way to the car. I've been already wandering for 30 minutes...\n"
-					+ "Ouch! I tripped onto something and I fell... Hmmm? Why is there a pavimented path here?\n"
-					+ "Maybe it leads to some interesting place, best chance I will find someone who can help me.\n\n"
+					+ "Ouch! I tripped onto something and I fell down...\n\n"
+					+ "Hmmm? Why is there a pavimented path here?\n"
+					+ "Maybe it leads to some interesting place, best chances are that I will find someone who can help me.\n\n"
 					+ "------------------------------\n\n"
 					+ "Finally! There seems to be a house with a light coming from the attic's window. I've got to get closer!"; // Stage's context to be displayed in the JEditorPane
 			this.pixelArtBackground = new ImageIcon("./img/3p.jpg"); // Setting the Stage's pixel-art background
@@ -203,6 +220,8 @@ public class Stage {
 					@Override
 					public void mouseClicked(MouseEvent e) {
 						description = items.get(0).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
+						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
 				// ***** 2ND ITEM - DARKNESS *****
@@ -210,6 +229,8 @@ public class Stage {
 					@Override
 					public void mouseClicked(MouseEvent e) {
 						description = items.get(1).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
+						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
 				// ***** 3RD ITEM - LIGHT *****
@@ -217,6 +238,8 @@ public class Stage {
 					@Override
 					public void mouseClicked(MouseEvent e) {
 						description = items.get(2).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
+						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
 				// ***** 4TH ITEM - HOUSE *****
@@ -258,6 +281,8 @@ public class Stage {
 					@Override
 					public void mouseClicked(MouseEvent e) {
 						description = items.get(0).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
+						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
 				// ***** 2ND ITEM - WINDOWS *****
@@ -265,6 +290,8 @@ public class Stage {
 					@Override
 					public void mouseClicked(MouseEvent e) {
 						description = items.get(1).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
+						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
 				// ***** 3RD ITEM - ENTRANCE *****
@@ -304,6 +331,8 @@ public class Stage {
 					@Override
 					public void mouseClicked(MouseEvent e) {
 						description = items.get(0).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
+						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
 				// ***** 2ND ITEM - SHOUT *****
@@ -311,6 +340,8 @@ public class Stage {
 					@Override
 					public void mouseClicked(MouseEvent e) {
 						description = items.get(1).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
+						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
 				// ***** 3RD ITEM - COME IN *****
@@ -351,6 +382,8 @@ public class Stage {
 					@Override
 					public void mouseClicked(MouseEvent e) {
 						description = items.get(0).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
+						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
 				// ***** 2ND ITEM - LIGHT *****
@@ -358,6 +391,8 @@ public class Stage {
 					@Override
 					public void mouseClicked(MouseEvent e) {
 						description = items.get(1).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
+						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
 				// ***** 3RD ITEM - STAIRS *****
@@ -397,6 +432,8 @@ public class Stage {
 					@Override
 					public void mouseClicked(MouseEvent e) {
 						description = items.get(0).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
+						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
 				// ***** 2ND ITEM - FLOOR *****
@@ -404,6 +441,8 @@ public class Stage {
 					@Override
 					public void mouseClicked(MouseEvent e) {
 						description = items.get(1).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
+						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
 				// ***** 3RD ITEM - CHECK LIGHT *****
@@ -448,6 +487,8 @@ public class Stage {
 					@Override
 					public void mouseClicked(MouseEvent e) {
 						description = items.get(0).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
+						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
 				// ***** 2ND ITEM - BRUSH *****
@@ -455,6 +496,8 @@ public class Stage {
 					@Override
 					public void mouseClicked(MouseEvent e) {
 						description = items.get(1).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
+						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
 				// ***** 3RD ITEM - TOUCH LANTERN *****
@@ -462,6 +505,8 @@ public class Stage {
 					@Override
 					public void mouseClicked(MouseEvent e) {
 						description = items.get(2).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
+						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
 				// ***** 4TH ITEM - SMASH LANTERN *****
@@ -505,6 +550,8 @@ public class Stage {
 					@Override
 					public void mouseClicked(MouseEvent e) {
 						description = items.get(0).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
+						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
 				// ***** 2ND ITEM - LETTER *****
@@ -512,6 +559,8 @@ public class Stage {
 					@Override
 					public void mouseClicked(MouseEvent e) {
 						description = items.get(1).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
+						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
 				// ***** 3RD ITEM - FOOTSTEPS *****
@@ -556,6 +605,8 @@ public class Stage {
 					@Override
 					public void mouseClicked(MouseEvent e) {
 						description = items.get(0).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
+						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
 				// ***** 2ND ITEM - CROW *****
@@ -563,6 +614,8 @@ public class Stage {
 					@Override
 					public void mouseClicked(MouseEvent e) {
 						description = items.get(1).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
+						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
 				// ***** 3RD ITEM - SNEAK OUT *****
@@ -602,6 +655,8 @@ public class Stage {
 					@Override
 					public void mouseClicked(MouseEvent e) {
 						description = items.get(0).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
+						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
 				// ***** 2ND ITEM - KEYHOLE *****
@@ -609,6 +664,8 @@ public class Stage {
 					@Override
 					public void mouseClicked(MouseEvent e) {
 						description = items.get(1).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
+						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
 				// ***** 3RD ITEM - OPEN THE DOOR *****
@@ -656,6 +713,8 @@ public class Stage {
 					@Override
 					public void mouseClicked(MouseEvent e) {
 						description = items.get(0).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
+						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
 				// ***** 2ND ITEM - CANDELABRUM *****
@@ -663,6 +722,8 @@ public class Stage {
 					@Override
 					public void mouseClicked(MouseEvent e) {
 						description = items.get(1).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
+						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
 				// ***** 3RD ITEM - CLOCK *****
@@ -670,6 +731,8 @@ public class Stage {
 					@Override
 					public void mouseClicked(MouseEvent e) {
 						description = items.get(2).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
+						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
 				// ***** 4TH ITEM - TABLE *****
@@ -724,6 +787,8 @@ public class Stage {
 					@Override
 					public void mouseClicked(MouseEvent e) {
 						description = items.get(0).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
+						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
 				// ***** 2ND ITEM - BOTTLE *****
@@ -731,6 +796,8 @@ public class Stage {
 					@Override
 					public void mouseClicked(MouseEvent e) {
 						description = items.get(1).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
+						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
 				// ***** 3RD ITEM - MAP *****
@@ -738,6 +805,8 @@ public class Stage {
 					@Override
 					public void mouseClicked(MouseEvent e) {
 						description = items.get(2).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
+						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
 				// ***** 4TH ITEM - PISTOL *****
@@ -784,6 +853,8 @@ public class Stage {
 					@Override
 					public void mouseClicked(MouseEvent e) {
 						description = items.get(0).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
+						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
 				// ***** 2ND ITEM - DESCRIPTION *****
@@ -791,6 +862,8 @@ public class Stage {
 					@Override
 					public void mouseClicked(MouseEvent e) {
 						description = items.get(1).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
+						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
 				// ***** 3RD ITEM - R'LYEH *****
@@ -798,6 +871,8 @@ public class Stage {
 					@Override
 					public void mouseClicked(MouseEvent e) {
 						description = items.get(2).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
+						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
 				// ***** 4TH ITEM - CTHULHU *****
@@ -838,6 +913,8 @@ public class Stage {
 					@Override
 					public void mouseClicked(MouseEvent e) {
 						description = items.get(0).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
+						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
 				// ***** 2ND ITEM - SHOOT THE MONSTER *****
@@ -876,6 +953,8 @@ public class Stage {
 					@Override
 					public void mouseClicked(MouseEvent e) {
 						description = items.get(0).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
+						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
 				// ***** 2ND ITEM - OPEN EYES *****
@@ -1056,4 +1135,5 @@ public class Stage {
 	public void setPixelArtBackground(ImageIcon pixelArtBackground) {
 		this.pixelArtBackground = pixelArtBackground;
 	}
+
 }

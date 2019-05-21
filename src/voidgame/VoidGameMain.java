@@ -22,8 +22,8 @@ public class VoidGameMain {
 			Window w = new Window();
 		} catch (InvalidItemNameException | InvalidItemDescriptionException | InvalidAbsolutePathException
 				| InvalidStageNameException | InvalidStageDescriptionException | InvalidItemMaxLengthException
-				| InvalidItemMinLengthException e) {
-			e.printStackTrace();
+				| InvalidItemMinLengthException e) { // Catching related exceptions
+			e.getMessage(); // Throws the corresponding exception message if a System error has happened
 		}
 	}
 }
