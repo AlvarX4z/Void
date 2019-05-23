@@ -7,6 +7,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import java.awt.Color;
+import java.awt.Cursor;
+
 import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -76,6 +78,7 @@ public final class Window extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Closes the program when the Window's X is clicked
 		setTitle("Void"); // Window's title
 		setIconImage(new ImageIcon("./img/void.png").getImage()); // Window's game icon
+		setCursor(Cursor.getPredefinedCursor(Cursor.CROSSHAIR_CURSOR)); // Sets a crosshair mouse cursor for the Window
 
 		// --------------------
 		// ----- MENU BAR -----

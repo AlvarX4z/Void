@@ -68,8 +68,4 @@ public class Protagonist {
 		this.inventory = inventory;
 	}
 
-	// ----------------------------------
-	// ----- FUNCTIONS AND METHODS ------
-	// ----------------------------------
-
 }
