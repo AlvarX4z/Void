@@ -3,6 +3,8 @@ package game_elements;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
@@ -1048,6 +1050,16 @@ public class Stage {
 				items.get(0).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the 'Exit game' Button Item
 					@Override
 					public void mouseClicked(MouseEvent e) {
+						try {
+							File gameOver = new File("./GameOver.txt"); // Creates a txt file in the parent folder
+							gameOver.createNewFile(); // Creates the new file
+							FileWriter writer = new FileWriter(gameOver); // Object FileWriter created for writing in the GameOver.txt file
+							writer.write("You have successfully beaten the game!\nCongratulations!"); // Writing into the file the String meant to be displayed
+							writer.flush(); // Committing the writing
+							writer.close(); // Closing the FileWriter Object
+						} catch (IOException e1) { // Catching related exceptions 
+							e1.printStackTrace(); // Prints the Exception's Track Trace
+						}
 						System.exit(0); // Closes the program
 					}
 				});
