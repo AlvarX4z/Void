@@ -7,6 +7,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -90,14 +91,17 @@ public class Stage {
 				items.add(tent); 
 				items.add(flashlight); 
 				items.add(nap);
-				//TODO METER FUNCION DE BD
-				insertItemsIntoDB(conn, items);
+				insertItemsIntoDB(conn, items); // Calling the insertItemsIntoDB function - Function located at the end of this Class
 				//TODO PILLAR DE CADA CONSULTA INFO PARA CADA EVENTO
 				// ***** 1ST ITEM - BIRDS *****
 				items.get(0).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the 'Birds' Button Item
 					@Override
 					public void mouseClicked(MouseEvent e) {
-						description = items.get(0).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
+						queryItemsDescription(conn, "birds"); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button - Function located at the end of the Class
+						// ***********************************************************************************************************************************
+						// ********** IF GAME'S NOT WORKING PROPERLY, COMMENT THE QUERYITEMSDESCRIPTION FROM ABOVE AND UNCOMMENT THE ONE FROM BELOW **********
+						// ***********************************************************************************************************************************
+						// description = items.get(0).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
 						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
 						window.repaint(); // Repaints the window in order to show the changes
 					}
@@ -106,7 +110,11 @@ public class Stage {
 				items.get(1).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the 'Tent' Button Item
 					@Override
 					public void mouseClicked(MouseEvent e) {
-						description = items.get(1).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
+						queryItemsDescription(conn, "tent"); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button - Function located at the end of the Class
+						// ***********************************************************************************************************************************
+						// ********** IF GAME'S NOT WORKING PROPERLY, COMMENT THE QUERYITEMSDESCRIPTION FROM ABOVE AND UNCOMMENT THE ONE FROM BELOW **********
+						// ***********************************************************************************************************************************
+						// description = items.get(1).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
 						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
 						window.repaint(); // Repaints the window in order to show the changes
 					}
@@ -115,7 +123,11 @@ public class Stage {
 				items.get(2).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the 'Flashlight' Button Item
 					@Override
 					public void mouseClicked(MouseEvent e) {
-						description = items.get(2).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
+						queryItemsDescription(conn, "flashlight"); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button - Function located at the end of the Class
+						// ***********************************************************************************************************************************
+						// ********** IF GAME'S NOT WORKING PROPERLY, COMMENT THE QUERYITEMSDESCRIPTION FROM ABOVE AND UNCOMMENT THE ONE FROM BELOW **********
+						// ***********************************************************************************************************************************
+						// description = items.get(2).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
 						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
 						window.repaint(); // Repaints the window in order to show the changes
 					}
@@ -157,7 +169,7 @@ public class Stage {
 				items.add(birdsForest); 
 				items.add(feelingForest); 
 				items.add(getCar);
-				
+				insertItemsIntoDB(conn, items); // Calling the insertItemsIntoDB function - Function located at the end of this Class
 				// ***** 1ST ITEM - MIST *****
 				items.get(0).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the 'Mist' Button Item
 					@Override
@@ -224,6 +236,7 @@ public class Stage {
 				items.add(darkness); 
 				items.add(light); 
 				items.add(headHouse);
+				insertItemsIntoDB(conn, items); // Calling the insertItemsIntoDB function - Function located at the end of this Class
 				// ***** 1ST ITEM - PAVIMENTED PATH *****
 				items.get(0).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the 'Pavimented Path' Button Item
 					@Override
@@ -283,7 +296,8 @@ public class Stage {
 				// Adding this Stage's Item to its corresponding ArrayList
 				items.add(wall); 
 				items.add(windows); 
-				items.add(lookForEntrance); 
+				items.add(lookForEntrance);
+				insertItemsIntoDB(conn, items); // Calling the insertItemsIntoDB function - Function located at the end of this Class
 				// ***** 1ST ITEM - WALL *****
 				items.get(0).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the 'Wall' Button Item
 					@Override
@@ -335,6 +349,7 @@ public class Stage {
 				items.add(threshold); 
 				items.add(shout); 
 				items.add(comeIn); 
+				insertItemsIntoDB(conn, items); // Calling the insertItemsIntoDB function - Function located at the end of this Class
 				// ***** 1ST ITEM - THRESHOLD *****
 				items.get(0).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the 'Threshold' Button Item
 					@Override
@@ -385,7 +400,8 @@ public class Stage {
 				// Adding this Stage's Item to its corresponding ArrayList
 				items.add(door); 
 				items.add(lightStairs); 
-				items.add(upstairs); 
+				items.add(upstairs);
+				insertItemsIntoDB(conn, items); // Calling the insertItemsIntoDB function - Function located at the end of this Class
 				// ***** 1ST ITEM - DOOR *****
 				items.get(0).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the 'Door' Button Item
 					@Override
@@ -436,7 +452,8 @@ public class Stage {
 				// Adding this Stage's Item to its corresponding ArrayList
 				items.add(dust); 
 				items.add(floor); 
-				items.add(checkLight); 
+				items.add(checkLight);
+				insertItemsIntoDB(conn, items); // Calling the insertItemsIntoDB function - Function located at the end of this Class
 				// ***** 1ST ITEM - DUST *****
 				items.get(0).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the 'Dust' Button Item
 					@Override
@@ -493,7 +510,8 @@ public class Stage {
 				items.add(carpet); 
 				items.add(brush); 
 				items.add(touchLantern); 
-				items.add(examineKey); 
+				items.add(examineKey);
+				insertItemsIntoDB(conn, items); // Calling the insertItemsIntoDB function - Function located at the end of this Class
 				// ***** 1ST ITEM - CARPET *****
 				items.get(0).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the 'Carpet' Button Item
 					@Override
@@ -560,7 +578,8 @@ public class Stage {
 				// Adding this Stage's Item to its corresponding ArrayList
 				items.add(key); 
 				items.add(letter); 
-				items.add(hide); 
+				items.add(hide);
+				insertItemsIntoDB(conn, items); // Calling the insertItemsIntoDB function - Function located at the end of this Class
 				// ***** 1ST ITEM - KEY *****
 				items.get(0).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the 'Key' Button Item
 					@Override
@@ -616,7 +635,8 @@ public class Stage {
 				// Adding this Stage's Item to its corresponding ArrayList
 				items.add(acolyte); 
 				items.add(crow); 
-				items.add(sneak); 
+				items.add(sneak);
+				insertItemsIntoDB(conn, items); // Calling the insertItemsIntoDB function - Function located at the end of this Class
 				// ***** 1ST ITEM - ACOLYTE *****
 				items.get(0).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the 'Acolyte' Button Item
 					@Override
@@ -665,7 +685,8 @@ public class Stage {
 				// Adding this Stage's Item to its corresponding ArrayList
 				items.add(chanting); 
 				items.add(lock); 
-				items.add(openDoor); 
+				items.add(openDoor);
+				insertItemsIntoDB(conn, items); // Calling the insertItemsIntoDB function - Function located at the end of this Class
 				// ***** 1ST ITEM - CHANTING *****
 				items.get(0).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the 'Chanting' Button Item
 					@Override
@@ -724,7 +745,8 @@ public class Stage {
 				items.add(livingRoom); 
 				items.add(candelabrum); 
 				items.add(clock); 
-				items.add(checkTable); 
+				items.add(checkTable);
+				insertItemsIntoDB(conn, items); // Calling the insertItemsIntoDB function - Function located at the end of this Class
 				// ***** 1ST ITEM - LIVING ROOM *****
 				items.get(0).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the 'Living room' Button Item
 					@Override
@@ -799,7 +821,8 @@ public class Stage {
 				items.add(skull); 
 				items.add(bottle); 
 				items.add(map); 
-				items.add(checkPainting); 
+				items.add(checkPainting);
+				insertItemsIntoDB(conn, items); // Calling the insertItemsIntoDB function - Function located at the end of this Class
 				// ***** 1ST ITEM - SKULL *****
 				items.get(0).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the 'Skull' Button Item
 					@Override
@@ -870,7 +893,8 @@ public class Stage {
 				items.add(painting); 
 				items.add(paintingDescription); 
 				items.add(rlyeh); 
-				items.add(turnAround); 
+				items.add(turnAround);
+				insertItemsIntoDB(conn, items); // Calling the insertItemsIntoDB function - Function located at the end of this Class
 				// ***** 1ST ITEM - PAINTING *****
 				items.get(0).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the 'Painting' Button Item
 					@Override
@@ -932,6 +956,7 @@ public class Stage {
 				// Adding this Stage's Item to its corresponding ArrayList
 				items.add(monster);
 				items.add(faint);
+				insertItemsIntoDB(conn, items); // Calling the insertItemsIntoDB function - Function located at the end of this Class
 				// ***** 1ST ITEM - MONSTER *****
 				items.get(0).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the 'Monster' Button Item
 					@Override
@@ -971,6 +996,7 @@ public class Stage {
 				// Adding this Stage's Item to its corresponding ArrayList
 				items.add(sound);
 				items.add(eyes);
+				insertItemsIntoDB(conn, items); // Calling the insertItemsIntoDB function - Function located at the end of this Class
 				// ***** 1ST ITEM - SOUND *****
 				items.get(0).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the 'Sound' Button Item
 					@Override
@@ -1005,6 +1031,7 @@ public class Stage {
 				lookSea = new Item("Look at the sea", " ", false, new VoidButton("Look at the sea")); // Initializing this Stage's first Item
 				this.items = new ArrayList<Item>(1); // Initializing the Item ArrayList which will hold the previous Items
 				items.add(lookSea); // Adding this Stage's Item to its corresponding ArrayList
+				insertItemsIntoDB(conn, items); // Calling the insertItemsIntoDB function - Function located at the end of this Class
 				// ***** 1ST ITEM - LOOK AT THE SEA *****
 				items.get(0).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the 'Look at the sea' Button Item
 					@Override
@@ -1031,6 +1058,7 @@ public class Stage {
 				faceFate = new Item("Face your fate", " ", false, new VoidButton("Face your fate")); // Initializing this Stage's first Item
 				this.items = new ArrayList<Item>(1); // Initializing the Item ArrayList which will hold the previous Items
 				items.add(faceFate); // Adding this Stage's Item to its corresponding ArrayList
+				insertItemsIntoDB(conn, items); // Calling the insertItemsIntoDB function - Function located at the end of this Class
 				// ***** 1ST ITEM - FACE YOUR FATE *****
 				items.get(0).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the 'Face your fate' Button Item
 					@Override
@@ -1055,6 +1083,7 @@ public class Stage {
 				exitGame = new Item("Exit game", " ", false, new VoidButton("Exit game")); // Initializing this Stage's first Item
 				this.items = new ArrayList<Item>(1); // Initializing the Item ArrayList which will hold the previous Items
 				items.add(exitGame); // Adding this Stage's Item to its corresponding ArrayList
+				insertItemsIntoDB(conn, items); // Calling the insertItemsIntoDB function - Function located at the end of this Class
 				// ***** 1ST ITEM - EXIT GAME *****
 				items.get(0).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the 'Exit game' Button Item
 					@Override
@@ -1101,9 +1130,9 @@ public class Stage {
 		} else {
 			// ***** DUE TO UNKNOWN REASONS, I CANNOT THROW THIS EXCEPTION WITHOUT A TRY/CATCH BLOCK, ECLIPSE COMPLAINTS ABOUT THIS *****
 			try {
-				throw new InvalidStageNameException("The Stage's name cannot be blank!");
-			} catch (InvalidStageNameException ex) {
-				ex.getMessage();
+				throw new InvalidStageNameException("The Stage's name cannot be blank!"); // Throws the fitting Exception
+			} catch (InvalidStageNameException ex) { // Catching related exceptions
+				ex.getMessage(); // Shows the Exception's error
 			}
 		}
 	}
@@ -1125,7 +1154,7 @@ public class Stage {
 		if (!description.equals("")) { // Checks if the Stage's description field hasn't a blank value
 			this.description = description;
 		} else {
-			throw new InvalidStageDescriptionException("The Stage's description cannot be blank!");
+			throw new InvalidStageDescriptionException("The Stage's description cannot be blank!"); // Throws the fitting Exception
 		}
 	}
 
@@ -1163,36 +1192,51 @@ public class Stage {
 		this.pixelArtBackground = pixelArtBackground;
 	}
 
+	/**
+	 * Inserts a Stage's Items into the Database
+	 * @param conn The Database Connection
+	 * @param items The Stage's Items contained within an ArrayList
+	 */
 	public void insertItemsIntoDB(Connection conn, ArrayList<Item> items) {
 		this.conn = conn;
 		conn = null;
 		try {
-			conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/void", "1dam", "1dam");
-			Statement insertItems = conn.createStatement();
-			ResultSet checkIfNull = insertItems.executeQuery("SELECT * FROM item;");
-			if (!checkIfNull.next()) {
-				for (byte i = 0; i < items.size(); i++) {
+			conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/void", "1dam", "1dam"); // DriverManager allows to connect to the localhosted Database
+			Statement insertItems = conn.createStatement(); // This Statement Object is necessary for later executing the SQL Inserts
+			ResultSet checkIfNull = insertItems.executeQuery("SELECT * FROM item;"); // This ResultSet query is for the next code line
+			if (!checkIfNull.next()) { // The ResultSet query checks if there any registers within the Database
+				for (byte i = 0; i < items.size(); i++) { // A for loop for iterating the Stage's Item ArrayList
 					insertItems.executeUpdate("INSERT INTO item (name, description, interactive, button) VALUES ('" + items.get(i).getName() + "', "
-							+ "" + items.get(i).getDescription() + ", '" + items.get(i).isInteractive() + "', '" + items.get(i).getButton() + "');");
+							+ "" + items.get(i).getDescription() + ", '" + items.get(i).isInteractive() + "', '" + items.get(i).getButton() + "');"); // SQL Statement for inserting the registers into the Database
 				}
 			}
-			conn.close();
-		} catch (SQLException ex) {
-			ex.getMessage();
+			conn.close(); // Connection Object to the Database closed
+		} catch (SQLException ex) { // Catching related exceptions
+			ex.getMessage(); // Shows the Exception's error
 		}
 	}
-	
-	public String queryItems(Connection conn) {
+
+	/**
+	 * Retrieves the String value of an Item's description from the Database
+	 * @param conn The Database Connection
+	 * @param itemName The Item's name
+	 * @return The Item's description String
+	 */
+	public String queryItemsDescription(Connection conn, String itemName) {
 		this.conn = conn;
+		String ret = ""; // This variable will be returned at the function's end
 		conn = null;
 		try {
-			conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/void", "1dam", "1dam");
-			Statement query = conn.createStatement();
-			ResultSet queryItem = query.executeQuery("SELECT description FROM item");
-			return;
-		} catch (SQLException ex) {
-			ex.getMessage();
+			conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/void", "1dam", "1dam"); // DriverManager allows to connect to the localhosted Database
+			PreparedStatement query = conn.prepareStatement("SELECT description FROM item WHERE name = ?;"); // This PreparedStatement is for preparing the SQL query to be customized by any 'name' input
+			query.setString(1, itemName); // The 'WHERE name = ?' value from above
+			ResultSet queryItem = query.executeQuery(); // The retrieved query's information must be stored in a ResultSet Object
+			ret = queryItem.getString(description); // From the retrieved query, I'm only interested in storing the Item's description
+			conn.close(); // Connection Object to the Database closed
+		} catch (SQLException ex) { // Catching related exceptions
+			ex.getMessage(); // Shows the Exception's error
 		}
+		return ret; 
 	}
 
 }
