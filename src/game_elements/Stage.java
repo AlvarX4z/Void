@@ -5,6 +5,11 @@ import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
@@ -35,6 +40,7 @@ public class Stage {
 	private String description; // The Stage's initial description
 	private ArrayList<Item> items; // The Stage's interactive Items
 	private ImageIcon pixelArtBackground; // The Stage's background pixel-art image
+	public static Connection conn; // Connection Object to the DB
 	public static final File pickingUpSound = new File("./audio/pickingUp.mp3"); // Sound for picking up items by the player
 	private static File usingSound; // Sound for using an item in a Stage
 	public static final File menuMusic = new File("./audio/terrorMusic.mp3"); // Suspense music for the main menu
@@ -42,7 +48,6 @@ public class Stage {
 	public static final File windHowlingSound = new File("./audio/windHowling.wav"); // Wind howling sound for exteriors
 	public static final File doorCreakingSound = new File("./audio/doorCreaking.wav"); // Door creaking sound
 	public static final File stairsSound = new File("./audio/stairs.wav"); // Footsteps on stairs sound
-	//TODO IMAGEN 7
 
 	// ------------------------
 	// ----- CONSTRUCTORS -----
@@ -84,7 +89,10 @@ public class Stage {
 				items.add(birds);
 				items.add(tent); 
 				items.add(flashlight); 
-				items.add(nap); 
+				items.add(nap);
+				//TODO METER FUNCION DE BD
+				insertItemsIntoDB(conn, items);
+				//TODO PILLAR DE CADA CONSULTA INFO PARA CADA EVENTO
 				// ***** 1ST ITEM - BIRDS *****
 				items.get(0).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the 'Birds' Button Item
 					@Override
@@ -149,6 +157,7 @@ public class Stage {
 				items.add(birdsForest); 
 				items.add(feelingForest); 
 				items.add(getCar);
+				
 				// ***** 1ST ITEM - MIST *****
 				items.get(0).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the 'Mist' Button Item
 					@Override
@@ -1152,6 +1161,38 @@ public class Stage {
 	 */
 	public void setPixelArtBackground(ImageIcon pixelArtBackground) {
 		this.pixelArtBackground = pixelArtBackground;
+	}
+
+	public void insertItemsIntoDB(Connection conn, ArrayList<Item> items) {
+		this.conn = conn;
+		conn = null;
+		try {
+			conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/void", "1dam", "1dam");
+			Statement insertItems = conn.createStatement();
+			ResultSet checkIfNull = insertItems.executeQuery("SELECT * FROM item;");
+			if (!checkIfNull.next()) {
+				for (byte i = 0; i < items.size(); i++) {
+					insertItems.executeUpdate("INSERT INTO item (name, description, interactive, button) VALUES ('" + items.get(i).getName() + "', "
+							+ "" + items.get(i).getDescription() + ", '" + items.get(i).isInteractive() + "', '" + items.get(i).getButton() + "');");
+				}
+			}
+			conn.close();
+		} catch (SQLException ex) {
+			ex.getMessage();
+		}
+	}
+	
+	public String queryItems(Connection conn) {
+		this.conn = conn;
+		conn = null;
+		try {
+			conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/void", "1dam", "1dam");
+			Statement query = conn.createStatement();
+			ResultSet queryItem = query.executeQuery("SELECT description FROM item");
+			return;
+		} catch (SQLException ex) {
+			ex.getMessage();
+		}
 	}
 
 }
