@@ -18,7 +18,6 @@ public class Protagonist {
 	private ArrayList<Item> inventory; // Protagonist's current inventory
 	public static final File yawningSound = new File("./audio/yawning.wav"); // Sound file for a yawning
 	public static final File huhSound = new File("./audio/huh.wav"); // Sound file for a 'huh' sound
-	//TODO IMAGEN 7
 	
 	// -------------------------
 	// ----- CONSTRUCTORS ------

@@ -93,7 +93,6 @@ public class Stage {
 				items.add(flashlight); 
 				items.add(nap);
 				insertItemsIntoDB(items); // Calling the insertItemsIntoDB function - Function located at the end of this Class
-				//TODO PILLAR DE CADA CONSULTA INFO PARA CADA EVENTO
 				// ***** 1ST ITEM - BIRDS *****
 				items.get(0).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the 'Birds' Button Item
 					@Override
