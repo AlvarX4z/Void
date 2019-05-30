@@ -107,7 +107,7 @@ public final class Window extends JFrame {
 		menuNewGame.addActionListener(new ActionListener() { // Function that creates an action listener
 			@Override
 			public void actionPerformed(ActionEvent arg0) { // Menu Item uses as event an 'actionPerformed'
-				newGame(); // Creates a 'Void' new game
+				JOptionPane.showMessageDialog(null, "Option not developed due to lack of time", "Option Not Developed", JOptionPane.INFORMATION_MESSAGE); // Shows an informative Dialog 
 			}
 		});	
 		menuGame.add(menuNewGame); // Adds said Menu Item to the Game Options Menu
@@ -117,7 +117,8 @@ public final class Window extends JFrame {
 		menuSaveGame.addActionListener(new ActionListener() { // Function that creates an action listener
 			@Override
 			public void actionPerformed(ActionEvent arg0) { // Menu Item uses as event an 'actionPerformed'
-				saveGame(); // Saves the current status of the game
+				// saveGame(); // Saves the current status of the game
+				JOptionPane.showMessageDialog(null, "Option not developed due to lack of time", "Option Not Developed", JOptionPane.INFORMATION_MESSAGE); // Shows an informative Dialog 
 			}
 		});
 		menuGame.add(menuSaveGame); // Adds said Menu Item to the Game Options Menu
@@ -127,7 +128,8 @@ public final class Window extends JFrame {
 		menuLoadGame.addActionListener(new ActionListener() { // Function that creates an action listener
 			@Override
 			public void actionPerformed(ActionEvent arg0) { // Menu Item uses as event an 'actionPerformed'
-				loadGame(); // Load a 'Void' game
+				// loadGame(); // Load a 'Void' game
+				JOptionPane.showMessageDialog(null, "Option not developed due to lack of time", "Option Not Developed", JOptionPane.INFORMATION_MESSAGE); // Shows an informative Dialog 
 			}
 		});
 		menuGame.add(menuLoadGame); // Adds said Menu Item to the Game Options Menu
@@ -165,9 +167,11 @@ public final class Window extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) { // Menu Item uses as event an 'actionPerformed'
 				if (menuSound.getState()) { // Checks if the Check Box Menu Item is checked
-					soundON(); // Enables the music and SFX sounds
+					// soundON(); // Enables the music and SFX sounds
+					JOptionPane.showMessageDialog(null, "Option not developed due to lack of time", "Option Not Developed", JOptionPane.INFORMATION_MESSAGE); // Shows an informative Dialog 
 				} else { 
-					soundOFF(); // Disables the music and SFX sounds
+					// soundOFF(); // Disables the music and SFX sounds
+					JOptionPane.showMessageDialog(null, "Option not developed due to lack of time", "Option Not Developed", JOptionPane.INFORMATION_MESSAGE); // Shows an informative Dialog 
 				}
 			}
 		});
@@ -193,10 +197,10 @@ public final class Window extends JFrame {
 				if (e.isControlDown()) { // Checks if the key 'Ctrl' is being pressed down
 					switch (e.getKeyCode()) { // Depending on the pressed key, a case will be executed
 					case KeyEvent.VK_I: // 'I' key
-						//TODO CONECTAR EL EVENTO A LA FUNCIÓN DE VER EL INVENTARIO
+						JOptionPane.showMessageDialog(null, "Option not developed due to lack of time", "Option Not Developed", JOptionPane.INFORMATION_MESSAGE); // Shows an informative Dialog 
 						break;
 					case KeyEvent.VK_N: // 'N' key
-						newGame(); // Creates a 'Void' new game
+						JOptionPane.showMessageDialog(null, "Option not developed due to lack of time", "Option Not Developed", JOptionPane.INFORMATION_MESSAGE); // Shows an informative Dialog 
 						break;
 					case KeyEvent.VK_S: // 'S' key
 						saveGame(); // Saves the current status of the game
@@ -268,14 +272,18 @@ public final class Window extends JFrame {
 	// ---------------------------------
 	// ----- METHODS AND FUNCTIONS -----
 	// ---------------------------------
-
+	
+	// *************************************************************************************************************
+	// ********** THE BELOW FUNCTIONS WERE MEANT TO BE DEVELOPED BUT DUE TO LACK OF TIME THIS COULDN'T BE **********
+	// *************************************************************************************************************
+	
 	/**
-	 * Creates a 'Void' new game
+	 * Creates a new 'Void' game
 	 */
 	public static void newGame() {
-
+		
 	}
-
+	
 	/**
 	 * Saves the current status of the game
 	 */
@@ -304,9 +312,9 @@ public final class Window extends JFrame {
 
 	}
 
-	// ----------------------------------
-	// ----- METHODS AND FUNCTIONS ------
-	// ----------------------------------
+	// *************************************************************************************************************
+	// ********** THE ABOVE FUNCTIONS WERE MEANT TO BE DEVELOPED BUT DUE TO LACK OF TIME THIS COULDN'T BE **********
+	// *************************************************************************************************************
 
 	/**
 	 * Gets a JEditorPane Object
