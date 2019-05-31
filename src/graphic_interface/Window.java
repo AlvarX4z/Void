@@ -262,12 +262,10 @@ public final class Window extends JFrame {
 		// -------------------------------
 
 		this.setContentPane(panel); // Sets the main JPanel to the Window
-
-		Stage tent = new Stage("tent", this); // Creates the first Stage Object
-		this.setStage(tent); // Enables the first Stage of the game to be shown due to the setStage function
-
+		this.setStage("");
 		setVisible(true); // Makes the window to be visible
 	}
+	
 
 	// ---------------------------------
 	// ----- METHODS AND FUNCTIONS -----
@@ -322,6 +320,17 @@ public final class Window extends JFrame {
 	 */
 	public JEditorPane getTextPanel() {
 		return textPanel;
+	}
+	
+
+	public void setStage(String stageName) {
+		Stage stage;
+		if(stageName.equals("")) {
+			 stage = new Stage("tent", this); // Creates the first Stage Object
+		}else {
+			stage=new Stage(stageName,this);
+		}
+		this.setStage(stage); // Enables the first Stage of the game to be shown due to the setStage function
 	}
 
 	/**
