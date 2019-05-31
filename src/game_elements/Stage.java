@@ -66,7 +66,7 @@ public class Stage {
 			// ******************************************
 			// ********** 1ST STAGE - THE TENT **********
 			// ******************************************
-			// createItemsDBTable(conn); // Calls this function in order to create the Database table for the Items
+			createItemsDBTable(); // Calls this function in order to create the Database table for the Items
 			this.description = "Your name is Randolph Carter.\n"
 					+ "You're a citizen of the city of Arkham (Massachusetts) and a History professor specialised in Indian American culture at the Mistakonic "
 					+ "University.\n"
@@ -97,12 +97,7 @@ public class Stage {
 				items.get(0).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the 'Birds' Button Item
 					@Override
 					public void mouseClicked(MouseEvent e) {
-						// queryItemsDescription(conn, "birds"); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button - Function located at the end of the Class
-						// ***********************************************************************************************************************************
-						// ********** IF GAME'S NOT WORKING PROPERLY, COMMENT THE QUERYITEMSDESCRIPTION FROM ABOVE AND UNCOMMENT THE ONE FROM BELOW **********
-						// ***********************************************************************************************************************************
-						description = items.get(0).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
-						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.getTextPanel().setText(queryItemsDescription("Birds")); // Gets the JEditorPane from the Window and sets the Item's description
 						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
@@ -110,12 +105,7 @@ public class Stage {
 				items.get(1).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the 'Tent' Button Item
 					@Override
 					public void mouseClicked(MouseEvent e) {
-						// queryItemsDescription(conn, "tent"); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button - Function located at the end of the Class
-						// ***********************************************************************************************************************************
-						// ********** IF GAME'S NOT WORKING PROPERLY, COMMENT THE QUERYITEMSDESCRIPTION FROM ABOVE AND UNCOMMENT THE ONE FROM BELOW **********
-						// ***********************************************************************************************************************************
-						description = items.get(1).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
-						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.getTextPanel().setText(queryItemsDescription("Tent")); // Gets the JEditorPane from the Window and sets the Item's description
 						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
@@ -123,12 +113,7 @@ public class Stage {
 				items.get(2).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the 'Flashlight' Button Item
 					@Override
 					public void mouseClicked(MouseEvent e) {
-						// queryItemsDescription(conn, "flashlight"); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button - Function located at the end of the Class
-						// ***********************************************************************************************************************************
-						// ********** IF GAME'S NOT WORKING PROPERLY, COMMENT THE QUERYITEMSDESCRIPTION FROM ABOVE AND UNCOMMENT THE ONE FROM BELOW **********
-						// ***********************************************************************************************************************************
-						description = items.get(2).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
-						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.getTextPanel().setText(queryItemsDescription("Flashlight")); // Gets the JEditorPane from the Window and sets the Item's description
 						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
@@ -174,8 +159,7 @@ public class Stage {
 				items.get(0).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the 'Mist' Button Item
 					@Override
 					public void mouseClicked(MouseEvent e) {
-						description = items.get(0).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
-						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.getTextPanel().setText(queryItemsDescription("Mist")); // Gets the JEditorPane from the Window and sets the Item's description
 						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
@@ -183,8 +167,7 @@ public class Stage {
 				items.get(1).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the 'Birds?' Button Item
 					@Override
 					public void mouseClicked(MouseEvent e) {
-						description = items.get(1).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
-						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.getTextPanel().setText(queryItemsDescription("Birds?")); // Gets the JEditorPane from the Window and sets the Item's description
 						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
@@ -192,8 +175,7 @@ public class Stage {
 				items.get(2).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the 'Feeling' Button Item
 					@Override
 					public void mouseClicked(MouseEvent e) {
-						description = items.get(2).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
-						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.getTextPanel().setText(queryItemsDescription("Feeling")); // Gets the JEditorPane from the Window and sets the Item's description
 						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
@@ -241,8 +223,7 @@ public class Stage {
 				items.get(0).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the 'Pavimented Path' Button Item
 					@Override
 					public void mouseClicked(MouseEvent e) {
-						description = items.get(0).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
-						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.getTextPanel().setText(queryItemsDescription("Pavimented Path")); // Gets the JEditorPane from the Window and sets the Item's description
 						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
@@ -250,8 +231,7 @@ public class Stage {
 				items.get(1).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the 'Darkness' Button Item
 					@Override
 					public void mouseClicked(MouseEvent e) {
-						description = items.get(1).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
-						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.getTextPanel().setText(queryItemsDescription("Darkness")); // Gets the JEditorPane from the Window and sets the Item's description
 						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
@@ -259,8 +239,7 @@ public class Stage {
 				items.get(2).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the 'Light' Button Item
 					@Override
 					public void mouseClicked(MouseEvent e) {
-						description = items.get(2).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
-						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.getTextPanel().setText(queryItemsDescription("Light")); // Gets the JEditorPane from the Window and sets the Item's description
 						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
@@ -302,8 +281,7 @@ public class Stage {
 				items.get(0).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the 'Wall' Button Item
 					@Override
 					public void mouseClicked(MouseEvent e) {
-						description = items.get(0).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
-						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.getTextPanel().setText(queryItemsDescription("Wall")); // Gets the JEditorPane from the Window and sets the Item's description
 						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
@@ -311,8 +289,7 @@ public class Stage {
 				items.get(1).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the 'Windows' Button Item
 					@Override
 					public void mouseClicked(MouseEvent e) {
-						description = items.get(1).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
-						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.getTextPanel().setText(queryItemsDescription("Windows")); // Gets the JEditorPane from the Window and sets the Item's description
 						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
@@ -354,8 +331,7 @@ public class Stage {
 				items.get(0).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the 'Threshold' Button Item
 					@Override
 					public void mouseClicked(MouseEvent e) {
-						description = items.get(0).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
-						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.getTextPanel().setText(queryItemsDescription("Threshold")); // Gets the JEditorPane from the Window and sets the Item's description
 						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
@@ -363,8 +339,7 @@ public class Stage {
 				items.get(1).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the 'Shout' Button Item
 					@Override
 					public void mouseClicked(MouseEvent e) {
-						description = items.get(1).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
-						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.getTextPanel().setText(queryItemsDescription("Shout")); // Gets the JEditorPane from the Window and sets the Item's description
 						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
@@ -406,8 +381,7 @@ public class Stage {
 				items.get(0).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the 'Door' Button Item
 					@Override
 					public void mouseClicked(MouseEvent e) {
-						description = items.get(0).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
-						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.getTextPanel().setText(queryItemsDescription("Door")); // Gets the JEditorPane from the Window and sets the Item's description
 						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
@@ -415,8 +389,7 @@ public class Stage {
 				items.get(1).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the 'Light' Button Item
 					@Override
 					public void mouseClicked(MouseEvent e) {
-						description = items.get(1).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
-						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.getTextPanel().setText(queryItemsDescription("Light")); // Gets the JEditorPane from the Window and sets the Item's description
 						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
@@ -458,8 +431,7 @@ public class Stage {
 				items.get(0).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the 'Dust' Button Item
 					@Override
 					public void mouseClicked(MouseEvent e) {
-						description = items.get(0).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
-						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.getTextPanel().setText(queryItemsDescription("Dust")); // Gets the JEditorPane from the Window and sets the Item's description
 						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
@@ -467,8 +439,7 @@ public class Stage {
 				items.get(1).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the 'Floor' Button Item
 					@Override
 					public void mouseClicked(MouseEvent e) {
-						description = items.get(1).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
-						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.getTextPanel().setText(queryItemsDescription("Floor")); // Gets the JEditorPane from the Window and sets the Item's description
 						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
@@ -516,8 +487,7 @@ public class Stage {
 				items.get(0).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the 'Carpet' Button Item
 					@Override
 					public void mouseClicked(MouseEvent e) {
-						description = items.get(0).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
-						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.getTextPanel().setText(queryItemsDescription("Carpet")); // Gets the JEditorPane from the Window and sets the Item's description
 						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
@@ -525,8 +495,7 @@ public class Stage {
 				items.get(1).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the 'Brush' Button Item
 					@Override
 					public void mouseClicked(MouseEvent e) {
-						description = items.get(1).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
-						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.getTextPanel().setText(queryItemsDescription("Brush")); // Gets the JEditorPane from the Window and sets the Item's description
 						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
@@ -534,8 +503,7 @@ public class Stage {
 				items.get(2).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the 'Touch lantern' Button Item
 					@Override
 					public void mouseClicked(MouseEvent e) {
-						description = items.get(2).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
-						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.getTextPanel().setText(queryItemsDescription("Touch lantern")); // Gets the JEditorPane from the Window and sets the Item's description
 						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
@@ -584,8 +552,7 @@ public class Stage {
 				items.get(0).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the 'Key' Button Item
 					@Override
 					public void mouseClicked(MouseEvent e) {
-						description = items.get(0).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
-						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.getTextPanel().setText(queryItemsDescription("Key")); // Gets the JEditorPane from the Window and sets the Item's description
 						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
@@ -593,8 +560,7 @@ public class Stage {
 				items.get(1).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the 'Letter' Button Item
 					@Override
 					public void mouseClicked(MouseEvent e) {
-						description = items.get(1).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
-						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.getTextPanel().setText(queryItemsDescription("Letter")); // Gets the JEditorPane from the Window and sets the Item's description
 						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
@@ -616,7 +582,7 @@ public class Stage {
 			// **********************************************
 			this.description = "I didn't expect someone wearing a robe and chanting some sinister chores...\n"
 					+ "What is he saying?\n\n"
-					+ "\tPh'nglui mglw'nafh Cthulhu R'lyeh wgah'nagl fhtagn\n\n"
+					+ "\tPh'nglui mglw'nafh Cthulhu Rlyeh wgah'nagl fhtagn\n\n"
 					+ "This is insane! He must be mad and he could be dangerous. I should avoid him, but how can I "
 					+ "sneak downstairs...?\n\n"
 					+ "\t*CAW* *CAW*\n\n"
@@ -641,8 +607,7 @@ public class Stage {
 				items.get(0).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the 'Acolyte' Button Item
 					@Override
 					public void mouseClicked(MouseEvent e) {
-						description = items.get(0).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
-						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.getTextPanel().setText(queryItemsDescription("Acolyte")); // Gets the JEditorPane from the Window and sets the Item's description
 						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
@@ -650,8 +615,7 @@ public class Stage {
 				items.get(1).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the 'Crow' Button Item
 					@Override
 					public void mouseClicked(MouseEvent e) {
-						description = items.get(1).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
-						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.getTextPanel().setText(queryItemsDescription("Crow")); // Gets the JEditorPane from the Window and sets the Item's description
 						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
@@ -691,8 +655,7 @@ public class Stage {
 				items.get(0).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the 'Chanting' Button Item
 					@Override
 					public void mouseClicked(MouseEvent e) {
-						description = items.get(0).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
-						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.getTextPanel().setText(queryItemsDescription("Chanting")); // Gets the JEditorPane from the Window and sets the Item's description
 						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
@@ -700,8 +663,7 @@ public class Stage {
 				items.get(1).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the 'Lock' Button Item
 					@Override
 					public void mouseClicked(MouseEvent e) {
-						description = items.get(1).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
-						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.getTextPanel().setText(queryItemsDescription("Lock")); // Gets the JEditorPane from the Window and sets the Item's description
 						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
@@ -751,8 +713,7 @@ public class Stage {
 				items.get(0).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the 'Living room' Button Item
 					@Override
 					public void mouseClicked(MouseEvent e) {
-						description = items.get(0).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
-						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.getTextPanel().setText(queryItemsDescription("Living room")); // Gets the JEditorPane from the Window and sets the Item's description
 						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
@@ -760,8 +721,7 @@ public class Stage {
 				items.get(1).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the 'Candelabrum' Button Item
 					@Override
 					public void mouseClicked(MouseEvent e) {
-						description = items.get(1).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
-						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.getTextPanel().setText(queryItemsDescription("Candelabrum")); // Gets the JEditorPane from the Window and sets the Item's description
 						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
@@ -769,8 +729,7 @@ public class Stage {
 				items.get(2).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the 'Clock' Button Item
 					@Override
 					public void mouseClicked(MouseEvent e) {
-						description = items.get(2).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
-						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.getTextPanel().setText(queryItemsDescription("Clock")); // Gets the JEditorPane from the Window and sets the Item's description
 						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
@@ -805,7 +764,7 @@ public class Stage {
 						+ "Hmmm... It pinpoints to a small island in the Pacific Ocean called Ponapé... There seems to be an almost unredable "
 						+ "description in Spanish:\n\n"
 						+ "\t'... La expedición de Alonso de Salazar en 1526 falleció al acercarse a las coordenadas donde"
-						+ "se encontraba la hundida ciudad de R'lyeh ...\n"
+						+ "se encontraba la hundida ciudad de Rlyeh ...\n"
 						+ "\t... La codiciosa búsqueda de tesoros en alta mar desencadenó la ira del Dios Antiguo ...'\n\n"
 						+ "My Spanish is very rusted, but I believe that I can figure the main meaning out...\n"
 						+ "... Something about an expedition, a sunken city and an Old God? ...\n\n"
@@ -827,8 +786,7 @@ public class Stage {
 				items.get(0).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the 'Skull' Button Item
 					@Override
 					public void mouseClicked(MouseEvent e) {
-						description = items.get(0).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
-						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.getTextPanel().setText(queryItemsDescription("Skull")); // Gets the JEditorPane from the Window and sets the Item's description
 						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
@@ -836,8 +794,7 @@ public class Stage {
 				items.get(1).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the 'Bottle' Button Item
 					@Override
 					public void mouseClicked(MouseEvent e) {
-						description = items.get(1).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
-						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.getTextPanel().setText(queryItemsDescription("Bottle")); // Gets the JEditorPane from the Window and sets the Item's description
 						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
@@ -845,8 +802,7 @@ public class Stage {
 				items.get(2).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the 'Map' Button Item
 					@Override
 					public void mouseClicked(MouseEvent e) {
-						description = items.get(2).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
-						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.getTextPanel().setText(queryItemsDescription("Read map")); // Gets the JEditorPane from the Window and sets the Item's description
 						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
@@ -874,19 +830,19 @@ public class Stage {
 				painting = new Item("Painting", "A painting in such a good condition, although a terrifying image is represented.\n"
 						+ "Hmmmm? There's a description carved at the frame's bottom...", false, new VoidButton("Painting")); // Initializing this Stage's first Item
 				paintingDescription = new Item("Description", "The description says:\n\n"
-						+ "\t'Ph'nglui mglw'nafh Cthulhu R'lyeh wgah'nagl fhtagn'\n"
-						+ "\t'In his house at R'lyeh, dead Cthulhu waits dreaming'\n\n"
-						+ "R'lyeh? That's the map's indicated location! May this Cthulhu be the representation of that Old God?"
+						+ "\t'Ph'nglui mglw'nafh Cthulhu Rlyeh wgah'nagl fhtagn'\n"
+						+ "\t'In his house at Rlyeh, dead Cthulhu waits dreaming'\n\n"
+						+ "Rlyeh? That's the map's indicated location! May this Cthulhu be the representation of that Old God?"
 						, false, 
 						new VoidButton("Description")); // Initializing this Stage's second Item
-				rlyeh = new Item("R'lyeh", "According to the map, this city is located at the Pacific Ocean... Is this God the sovereign of this forgotten "
+				rlyeh = new Item("Rlyeh", "According to the map, this city is located at the Pacific Ocean... Is this God the sovereign of this forgotten "
 						+ "civilization?\n"
 						+ "Is it sleeping at this sunken city according to the tale?\n\n"
 						+ "May this image be a depicting of said Old God? ... My heart feels at dispared when I look at it..\n"
 						+ "It looks like a metaphorical end of life...\n"
 						+ "Might it be a Death God for this civilization?\n\n"
 						+ "\t*SHRIEK*\n\n"
-						+ "What's that screeching I hear in the hall?", false, new VoidButton("R'lyeh")); // Initializing this Stage's third Item
+						+ "What's that screeching I hear in the hall?", false, new VoidButton("Rlyeh")); // Initializing this Stage's third Item
 				turnAround = new Item("Turn around", " ", false, new VoidButton("Turn around")); // Initializing this Stage's fourth Item
 				this.items = new ArrayList<Item>(4); // Initializing the Item ArrayList which will hold the previous Items
 				// Adding this Stage's Item to its corresponding ArrayList
@@ -899,8 +855,7 @@ public class Stage {
 				items.get(0).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the 'Painting' Button Item
 					@Override
 					public void mouseClicked(MouseEvent e) {
-						description = items.get(0).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
-						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.getTextPanel().setText(queryItemsDescription("Painting")); // Gets the JEditorPane from the Window and sets the Item's description
 						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
@@ -908,17 +863,15 @@ public class Stage {
 				items.get(1).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the 'Description' Button Item
 					@Override
 					public void mouseClicked(MouseEvent e) {
-						description = items.get(1).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
-						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.getTextPanel().setText(queryItemsDescription("Description")); // Gets the JEditorPane from the Window and sets the Item's description
 						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
-				// ***** 3RD ITEM - R'LYEH *****
-				items.get(2).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the 'R'lyeh' Button Item
+				// ***** 3RD ITEM - RLYEH *****
+				items.get(2).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the 'Rlyeh' Button Item
 					@Override
 					public void mouseClicked(MouseEvent e) {
-						description = items.get(2).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
-						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.getTextPanel().setText(queryItemsDescription("Rlyeh")); // Gets the JEditorPane from the Window and sets the Item's description
 						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
@@ -961,8 +914,7 @@ public class Stage {
 				items.get(0).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the 'Monster' Button Item
 					@Override
 					public void mouseClicked(MouseEvent e) {
-						description = items.get(0).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
-						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.getTextPanel().setText(queryItemsDescription("Monster")); // Gets the JEditorPane from the Window and sets the Item's description
 						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
@@ -1001,8 +953,7 @@ public class Stage {
 				items.get(0).getButton().addMouseListener(new MouseAdapter() { // Mouse Click Event for the 'Sound' Button Item
 					@Override
 					public void mouseClicked(MouseEvent e) {
-						description = items.get(0).getDescription(); // Stage's context to be displayed in the JEditorPane after clicking the Item's Button
-						window.getTextPanel().setText(description); // Gets the JEditorPane from the Window and sets the Item's description
+						window.getTextPanel().setText(queryItemsDescription("Sound")); // Gets the JEditorPane from the Window and sets the Item's description
 						window.repaint(); // Repaints the window in order to show the changes
 					}
 				});
@@ -1201,14 +1152,14 @@ public class Stage {
 		String sqlCreate = "CREATE TABLE IF NOT EXISTS item(name VARCHAR(25), description VARCHAR(1000));"; // SQL script for creating the Item's Database table
 		conn = null;
 		try {
-			conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/void", "root", "123456789qwerty"); // DriverManager allows to connect to the localhosted Database
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/void?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", 
+					"root", "123456789qwerty"); // DriverManager allows to connect to the localhosted Database
 			Statement statementeDB = conn.createStatement(); // This Statement Object is necessary for later executing the creation of both Database and Item's table
 			statementeDB.execute(DBCreate); // Executes the SQL script for creating the Database 
 			statementeDB.execute(sqlCreate); // Executes the SQL script for creating the Item's Database table
 			conn.close(); // Connection Object to the Database closed
-			System.out.println("Creado");
 		} catch (SQLException e) { // Catching related exceptions
-			e.getMessage(); // Shows the Exception's error
+			e.printStackTrace(); // Shows the Exception's error
 		}
 	}
 
@@ -1220,18 +1171,18 @@ public class Stage {
 	public void insertItemsIntoDB(ArrayList<Item> items) {
 		conn = null;
 		try {
-			conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/void", "root", "123456789qwerty"); // DriverManager allows to connect to the localhosted Database
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/void?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", 
+					"root", "123456789qwerty"); // DriverManager allows to connect to the localhosted Database
 			Statement insertItems = conn.createStatement(); // This Statement Object is necessary for later executing the SQL Inserts
-			ResultSet checkIfNull = insertItems.executeQuery("SELECT * FROM item;"); // This ResultSet query is for the next code line
-			if (!checkIfNull.next()) { // The ResultSet query checks if there any registers within the Database
-				for (byte i = 0; i < items.size(); i++) { // A for loop for iterating the Stage's Item ArrayList
-					insertItems.executeUpdate("INSERT INTO item (name, description) VALUES ('" + items.get(i).getName() + "', "
-							+ "" + items.get(i).getDescription() + "');"); // SQL Statement for inserting the registers into the Database
-				}
+			insertItems.executeUpdate("DELETE FROM item;");
+			for (byte i = 0; i < items.size(); i++) { // A for loop for iterating the Stage's Item ArrayList
+				insertItems.executeUpdate("INSERT INTO item (name, description) VALUES (\"" + items.get(i).getName() + "\", \"" + 
+						items.get(i).getDescription() + "\");"); // SQL Statement for inserting the registers into the Database
 			}
+
 			conn.close(); // Connection Object to the Database closed
 		} catch (SQLException ex) { // Catching related exceptions
-			ex.getMessage(); // Shows the Exception's error
+			ex.printStackTrace(); // Shows the Exception's error
 		}
 	}
 
@@ -1245,14 +1196,16 @@ public class Stage {
 		String ret = ""; // This variable will be returned at the function's end
 		conn = null;
 		try {
-			conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/void", "root", "123456789qwerty"); // DriverManager allows to connect to the localhosted Database
-			PreparedStatement query = conn.prepareStatement("SELECT description FROM item WHERE name = ?;"); // This PreparedStatement is for preparing the SQL query to be customized by any 'name' input
-			query.setString(1, itemName); // The 'WHERE name = ?' value from above
-			ResultSet queryItem = query.executeQuery(); // The retrieved query's information must be stored in a ResultSet Object
-			ret = queryItem.getString(description); // From the retrieved query, I'm only interested in storing the Item's description
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/void?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", 
+					"root", "123456789qwerty"); // DriverManager allows to connect to the localhosted Database
+			Statement query = conn.createStatement(); // This PreparedStatement is for preparing the SQL query to be customized by any 'name' input
+			ResultSet queryItem = query.executeQuery("SELECT description FROM item WHERE name = '" + itemName + "';"); // The retrieved query's information must be stored in a ResultSet Object
+			while (queryItem.next()) {
+				ret = queryItem.getString("description"); // From the retrieved query, I'm only interested in storing the Item's description
+				;}
 			conn.close(); // Connection Object to the Database closed
 		} catch (SQLException ex) { // Catching related exceptions
-			ex.getMessage(); // Shows the Exception's error
+			ex.printStackTrace(); // Shows the Exception's error
 		}
 		return ret; 
 	}
