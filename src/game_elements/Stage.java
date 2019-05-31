@@ -1174,12 +1174,11 @@ public class Stage {
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/void?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", 
 					"root", "123456789qwerty"); // DriverManager allows to connect to the localhosted Database
 			Statement insertItems = conn.createStatement(); // This Statement Object is necessary for later executing the SQL Inserts
-			insertItems.executeUpdate("DELETE FROM item;");
+			insertItems.executeUpdate("DELETE FROM item;"); // This Statement Object makes sure that there's no duplicated rows everytime the funcion's called
 			for (byte i = 0; i < items.size(); i++) { // A for loop for iterating the Stage's Item ArrayList
 				insertItems.executeUpdate("INSERT INTO item (name, description) VALUES (\"" + items.get(i).getName() + "\", \"" + 
 						items.get(i).getDescription() + "\");"); // SQL Statement for inserting the registers into the Database
 			}
-
 			conn.close(); // Connection Object to the Database closed
 		} catch (SQLException ex) { // Catching related exceptions
 			ex.printStackTrace(); // Shows the Exception's error
@@ -1200,9 +1199,9 @@ public class Stage {
 					"root", "123456789qwerty"); // DriverManager allows to connect to the localhosted Database
 			Statement query = conn.createStatement(); // This PreparedStatement is for preparing the SQL query to be customized by any 'name' input
 			ResultSet queryItem = query.executeQuery("SELECT description FROM item WHERE name = '" + itemName + "';"); // The retrieved query's information must be stored in a ResultSet Object
-			while (queryItem.next()) {
+			while (queryItem.next()) { // A while loop which runs if the DB cursor can advance
 				ret = queryItem.getString("description"); // From the retrieved query, I'm only interested in storing the Item's description
-				;}
+			;}
 			conn.close(); // Connection Object to the Database closed
 		} catch (SQLException ex) { // Catching related exceptions
 			ex.printStackTrace(); // Shows the Exception's error
