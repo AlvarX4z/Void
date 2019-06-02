@@ -7,7 +7,6 @@ import exceptions.InvalidItemMinLengthException;
 import exceptions.InvalidItemNameException;
 import exceptions.InvalidStageDescriptionException;
 import exceptions.InvalidStageNameException;
-import game_elements.Protagonist;
 import graphic_interface.Window;
 
 public class VoidGameMain {

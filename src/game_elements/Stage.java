@@ -7,7 +7,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -44,7 +43,6 @@ public class Stage {
 	public static Connection conn; // Connection Object to the DB
 	public static final File pickingUpSound = new File("./audio/pickingUp.mp3"); // Sound for picking up items by the player
 	private static File usingSound; // Sound for using an item in a Stage
-	public static final File menuMusic = new File("./audio/terrorMusic.mp3"); // Suspense music for the main menu
 	public static final File birdsSound = new File("./audio/birds.wav"); // Birds chirping sound for the first Stage
 	public static final File windHowlingSound = new File("./audio/windHowling.wav"); // Wind howling sound for exteriors
 	public static final File doorCreakingSound = new File("./audio/doorCreaking.wav"); // Door creaking sound
@@ -1148,6 +1146,10 @@ public class Stage {
 	 * @param conn The Database Connection
 	 */
 	public void createItemsDBTable() {
+		// ************************************************************************************************************
+		// ***** I BELIEVE IT'S MANDATORY TO CREATE FIRST A SCHEMA IN MYSQL WORKBENCH THAT I COULDN'T DO FIRST IN *****
+		// ***** THIS JAVA CODE. THE SQL SCRIPT WOULD BE: 'CREATE SCHEMA [SchemaName] COLLATE = utf8_general_ci;' *****
+		// ************************************************************************************************************
 		String DBCreate = "CREATE DATABASE IF NOT EXISTS voidgame;"; // SQL script for creating the Database
 		String sqlCreate = "CREATE TABLE IF NOT EXISTS item(name VARCHAR(25), description VARCHAR(1000));"; // SQL script for creating the Item's Database table
 		conn = null;

@@ -127,7 +127,6 @@ public class Item {
 		} else {
 			throw new InvalidItemNullButton("The Item's button can't be a null value!");
 		}
-		
 	}
 
 }

@@ -1,7 +1,13 @@
 package graphic_interface;
 
+import javax.sound.sampled.AudioFormat;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.DataLine;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ImageIcon;
-import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JEditorPane;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -22,7 +28,6 @@ import exceptions.InvalidItemMinLengthException;
 import exceptions.InvalidItemNameException;
 import exceptions.InvalidStageDescriptionException;
 import exceptions.InvalidStageNameException;
-import game_elements.Item;
 import game_elements.Protagonist;
 import game_elements.Stage;
 
@@ -31,7 +36,8 @@ import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.util.ArrayList;
+import java.io.File;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 import java.awt.BorderLayout;
 
@@ -50,6 +56,7 @@ public final class Window extends JFrame {
 	private JPanel buttonsPanel; // A JPane where the interactive buttons are located
 	private JEditorPane textPanel; // A EditorPane where the text will be displayed
 	private JLabel imageBackground; // A JLabel where the image for each Stage will be shown
+	public static final File gameMusic = new File("./audio/terrorMusic.wav"); // Suspense music for the game
 
 	// -----------------------
 	// ----- CONSTRUCTOR -----
@@ -146,7 +153,8 @@ public final class Window extends JFrame {
 				+ "Save Game   -   Ctrl+S\n"
 				+ "Load Game   -   Ctrl+L\n"
 				+ "Keybindings   -   Ctrl+K\n"
-				+ "De/Activate Sound   -   Ctrl+Y\n"
+				+ "Activate Sound   -   Ctrl+Y\n"
+				+ "Deactivate Sound   -   Ctrl+U\n"
 				+ "Exit Game   -   Ctrl+E\n"
 				+ "------------------------------------------------\n\n"; // Message to be displayed in the Dialog
 		VoidMenuItem menuKeybindings = new VoidMenuItem("Keybindings"); // Creation of a 'Keybindings' Menu Item
@@ -158,24 +166,31 @@ public final class Window extends JFrame {
 		});
 		menuGame.add(menuKeybindings); // Adds said Menu Item to the Game Options Menu
 
-		// ***** DEACTIVATE SOUND ******
-		JCheckBoxMenuItem menuSound = new JCheckBoxMenuItem("Deactivate Sound"); // Creation of a 'Deactivate Sound' Menu Item
-		menuSound.setForeground(Color.LIGHT_GRAY); // Check Box Menu's Item font color
-		menuSound.setFont(new Font("Ink Free", Font.PLAIN, 25)); // Check Box Menu Item font family, style and size
-		menuSound.setBackground(Color.BLACK); // Check Box Menu's Item background color
-		menuSound.addActionListener(new ActionListener() { // Function that creates an action listener
+		// ***** ACTIVATE SOUND ******
+		VoidMenuItem menuActivateSound = new VoidMenuItem("Activate Sound"); // Creation of a 'Deactivate Sound' Menu Item
+		menuActivateSound.setForeground(Color.LIGHT_GRAY); // Check Box Menu's Item font color
+		menuActivateSound.setFont(new Font("Ink Free", Font.PLAIN, 25)); // Check Box Menu Item font family, style and size
+		menuActivateSound.setBackground(Color.BLACK); // Check Box Menu's Item background color
+		menuActivateSound.addActionListener(new ActionListener() { // Function that creates an action listener
 			@Override
 			public void actionPerformed(ActionEvent arg0) { // Menu Item uses as event an 'actionPerformed'
-				if (menuSound.getState()) { // Checks if the Check Box Menu Item is checked
-					// soundON(); // Enables the music and SFX sounds
-					JOptionPane.showMessageDialog(null, "Option not developed due to lack of time", "Option Not Developed", JOptionPane.INFORMATION_MESSAGE); // Shows an informative Dialog 
-				} else { 
-					// soundOFF(); // Disables the music and SFX sounds
-					JOptionPane.showMessageDialog(null, "Option not developed due to lack of time", "Option Not Developed", JOptionPane.INFORMATION_MESSAGE); // Shows an informative Dialog 
-				}
+				soundON(); // Enables the music and SFX sounds
 			}
 		});
-		menuGame.add(menuSound); // Adds said Check Box Menu Item to the Game Options Menu
+		menuGame.add(menuActivateSound); // Adds said Check Box Menu Item to the Game Options Menu
+
+		// ***** DEACTIVATE SOUND ******
+		VoidMenuItem menuDeactivateSound = new VoidMenuItem("Deactivate Sound"); // Creation of a 'Deactivate Sound' Menu Item
+		menuDeactivateSound.setForeground(Color.LIGHT_GRAY); // Check Box Menu's Item font color
+		menuDeactivateSound.setFont(new Font("Ink Free", Font.PLAIN, 25)); // Check Box Menu Item font family, style and size
+		menuDeactivateSound.setBackground(Color.BLACK); // Check Box Menu's Item background color
+		menuDeactivateSound.addActionListener(new ActionListener() { // Function that creates an action listener
+			@Override
+			public void actionPerformed(ActionEvent arg0) { // Menu Item uses as event an 'actionPerformed'
+				soundOFF(); // Disables the music and SFX sounds
+			}
+		});
+		menuGame.add(menuDeactivateSound); // Adds said Check Box Menu Item to the Game Options Menu
 
 		// ***** EXIT ******
 		VoidMenuItem menuExit = new VoidMenuItem("Exit"); // Creation of an 'Exit' Menu Item
@@ -212,11 +227,10 @@ public final class Window extends JFrame {
 						JOptionPane.showMessageDialog(null, keybindingsList, "Keybindings", JOptionPane.INFORMATION_MESSAGE); // Shows the keybindings in a Dialog
 						break;
 					case KeyEvent.VK_Y: // 'Y' key
-						if (menuSound.getState()) { // Checks if the Check Box Menu Item is checked
-							soundON(); // Enables the music and SFX sounds
-						} else { 
-							soundOFF(); // Disables the music and SFX sounds
-						}
+						soundON(); // Enables the music
+						break;
+					case KeyEvent.VK_U: // 'U' key
+						soundOFF(); // Disables the music
 						break;
 					case KeyEvent.VK_E: // 'E' key
 						System.exit(EXIT_ON_CLOSE); // Closes the program
@@ -262,26 +276,26 @@ public final class Window extends JFrame {
 		// -------------------------------
 
 		this.setContentPane(panel); // Sets the main JPanel to the Window
-		this.setStage("");
+		Stage stage = new Stage("tent", this); // Creates the first Stage Object
+		this.setStage(stage); // Enables the first Stage of the game to be shown due to the setStage function
 		setVisible(true); // Makes the window to be visible
 	}
-	
 
 	// ---------------------------------
 	// ----- METHODS AND FUNCTIONS -----
 	// ---------------------------------
-	
+
 	// *************************************************************************************************************
 	// ********** THE BELOW FUNCTIONS WERE MEANT TO BE DEVELOPED BUT DUE TO LACK OF TIME THIS COULDN'T BE **********
 	// *************************************************************************************************************
-	
+
 	/**
 	 * Creates a new 'Void' game
 	 */
 	public static void newGame() {
-		
+
 	}
-	
+
 	/**
 	 * Saves the current status of the game
 	 */
@@ -297,17 +311,39 @@ public final class Window extends JFrame {
 	}
 
 	/**
-	 * Turns the music and SFX sounds on
+	 * Turns the music on
 	 */
 	public static void soundON() {
-
+		try {
+			AudioInputStream audioStream = AudioSystem.getAudioInputStream(gameMusic); // AudioInputStream for playing the music
+			AudioFormat format = audioStream.getFormat(); // AudioFormat for allowing Java to understand the music's format file
+			DataLine.Info info = new DataLine.Info(Clip.class, format); // DataLine for allowing the .wav file to be understood later in a Clip Object
+			Clip music = (Clip)AudioSystem.getLine(info); // System's Audio recognizes the file as a music clip
+			music.open(audioStream); // Opens the channel to play the music
+			music.start(); // Music starts playing
+			int infiniteLoop = music.LOOP_CONTINUOUSLY; // This variable keeps the enum value for an infinite loop
+			music.loop(infiniteLoop); // States the music's loop
+			// music.close(); Closes the channel to stop the music. This is commented because if not music doesn't play
+		} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
-	 * Turns the music and SFX sounds off
+	 * Turns the music off. This function does not work properly, have to check this later
 	 */
 	public static void soundOFF() {
-
+		try {
+			AudioInputStream audioStream = AudioSystem.getAudioInputStream(gameMusic); // AudioInputStream for playing the music
+			AudioFormat format = audioStream.getFormat(); // AudioFormat for allowing Java to understand the music's format file
+			DataLine.Info info = new DataLine.Info(Clip.class, format); // DataLine for allowing the .wav file to be understood later in a Clip Object
+			Clip music = (Clip)AudioSystem.getLine(info); // System's Audio recognizes the file as a music clip
+			music.stop(); // Music stops playing
+			music.close(); // Closes the channel to stop the music
+			// music.close();
+		} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+			e.printStackTrace();
+		}
 	}
 
 	// *************************************************************************************************************
@@ -321,17 +357,18 @@ public final class Window extends JFrame {
 	public JEditorPane getTextPanel() {
 		return textPanel;
 	}
-	
 
+	/*
 	public void setStage(String stageName) {
 		Stage stage;
-		if(stageName.equals("")) {
+		if (stageName.equals("")) {
 			 stage = new Stage("tent", this); // Creates the first Stage Object
-		}else {
-			stage=new Stage(stageName,this);
+		} else {
+			stage = new Stage(stageName, this);
 		}
 		this.setStage(stage); // Enables the first Stage of the game to be shown due to the setStage function
 	}
+	 */
 
 	/**
 	 * Sets a new Stage for playing the game
